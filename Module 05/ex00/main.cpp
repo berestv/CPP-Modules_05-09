@@ -51,4 +51,24 @@ int main ()
 
 	std::cout << std::endl;
 
+	try {
+		std::cout << "Try 4 [Normal]: " << std::endl;
+		Bureaucrat gradeHigh("Mike", 5);
+
+		std::cout << gradeHigh;
+		gradeHigh.operator++();
+		gradeHigh.operator++();
+		gradeHigh.operator++();
+		std::cout << gradeHigh;
+		gradeHigh.operator--();
+		std::cout << gradeHigh;
+	}
+	catch (Bureaucrat::GradeTooLowException& e) {
+		std::cerr << e.what();
+	}
+	catch (Bureaucrat::GradeTooHighException& e) {
+		std::cerr << e.what();
+	}
+
+	std::cout << std::endl;
 }

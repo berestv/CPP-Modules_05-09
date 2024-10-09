@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("Bureau"), grade(150) {
+Bureaucrat::Bureaucrat() : name("DefBureau"), grade(150) {
 	std::cout << "Bureaucrat default constructor called." << std::endl;
 }
 
@@ -9,7 +9,10 @@ Bureaucrat::Bureaucrat(std::string nm, int grd) : name(nm) {
 	try {
 		setGrade(grd);
 	}
-	catch (const std::exception& e) {
+	catch (const Bureaucrat::GradeTooHighException& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	catch (const Bureaucrat::GradeTooLowException& e) {
 		std::cerr << e.what() << std::endl;
 	}
 }
@@ -21,7 +24,17 @@ Bureaucrat::Bureaucrat(const Bureaucrat &brcrt) : name(brcrt.name), grade(brcrt.
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &brcrt) {
 	std::cout << "Bureaucrat copy assignment operator called." << std::endl;
 	if (this != &brcrt)
-		this->grade = brcrt.grade;
+	{
+		try {
+			setGrade(brcrt.grade);
+		}
+		catch (const Bureaucrat::GradeTooHighException& e) {
+			std::cerr << e.what() << std::endl;
+		}
+		catch (const Bureaucrat::GradeTooLowException& e) {
+			std::cerr << e.what() << std::endl;
+		}
+	}
 	return *this;
 }
 
