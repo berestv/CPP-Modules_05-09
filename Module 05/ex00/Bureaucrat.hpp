@@ -21,16 +21,17 @@ public:
 	Bureaucrat operator++();
 	Bureaucrat operator--();
 
-	std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
-
-	class GradeTooHighException {
+	class GradeTooHighException : public std::exception {
 	public:
-		virtual const char * what() const throw();
+		virtual const char* what() const throw();
 	};
-	class GradeTooLowException {
+
+class GradeTooLowException : public std::exception {
 	public:
-		virtual const char * what() const throw();
+		virtual const char* what() const throw();
 	};
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
 
 #endif // BUREAUCRAT_HPP
