@@ -14,6 +14,14 @@ Bureaucrat::Bureaucrat(std::string nm, int grd) {
 	}
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &brcrt) {
+
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &brcrt) {
+
+}
+
 // FUNCTIONS
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
