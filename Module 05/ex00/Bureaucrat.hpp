@@ -14,9 +14,10 @@ public:
 	Bureaucrat(std::string nm, int grd);
 	Bureaucrat(const Bureaucrat& brcrt);
 	Bureaucrat &operator=(const Bureaucrat& brcrt);
+	~Bureaucrat();
 
-	std::string getName();
-	int getGrade();
+	std::string getName() const;
+	int getGrade() const;
 
 	Bureaucrat operator++();
 	Bureaucrat operator--();

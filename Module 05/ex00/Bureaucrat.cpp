@@ -25,13 +25,17 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &brcrt) {
 	return *this;
 }
 
+Bureaucrat::~Bureaucrat() {
+	std::cout << "Bureaucrat destructor called." << std::endl;
+}
+
 // FUNCTIONS
 
-std::string Bureaucrat::getName() {
+std::string Bureaucrat::getName() const {
 	return this->name;
 }
 
-int Bureaucrat::getGrade() {
+int Bureaucrat::getGrade() const {
 	return this->grade;
 }
 
@@ -69,9 +73,10 @@ Bureaucrat Bureaucrat::operator--() {
 	catch (const std::exception& e) {
 		std::cerr << "Cannot decrement grade. " << e.what() << std::endl;
 	}
+	return *this;
 }
 
-std::ostream& operator<<(std::ostream& os, Bureaucrat& obj){
-	os << obj.getName() << ", bureaucrat grade " << obj.getGrade();
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj){
+	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
 	return os;
 }
