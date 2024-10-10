@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 RM = rm -rf
 
 # Project name
-NAME = bureaucrat
+NAME = maggots
 SRC = main.cpp Bureaucrat.cpp Form.cpp
 
 OBJDIR = bin

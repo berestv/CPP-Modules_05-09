@@ -2,7 +2,8 @@
 #define FORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
 private:
@@ -11,10 +12,10 @@ private:
 	const int sigGrade;
 	const int excGrade;
 
-	void checkGrades(int sGrade, int xGrade);
+	static void checkGrades(int sGrade, int xGrade);
 public:
 	Form();
-	Form(const std::string& nm, const int sGrade, const int xGrade);
+	Form(const std::string& nm, int sGrade, int xGrade);
 	Form(const Form& frm);
 	Form &operator=(const Form& frm);
 	~Form();
@@ -23,10 +24,17 @@ public:
 	bool isSigned() const;
 	int getSigGrade() const;
 	int getExcGrade() const;
+	void beSigned(Bureaucrat& bureau);
 
-	typedef Bureaucrat::GradeTooHighException GradeTooHighException;
-	typedef Bureaucrat::GradeTooLowException GradeTooLowException;
+	class GradeTooHighException : public std::exception {
+	public:
+		virtual const char * what() const throw();
+	};
 
+	class GradeTooLowException : public std::exception {
+	public:
+		virtual const char * what() const throw();
+	};
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& obj);

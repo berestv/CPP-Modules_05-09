@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() : name("Default"), sign(false), sigGrade(1), excGrade(1){
 	std::cout << "Form default constructor called." << std::endl;
@@ -24,6 +25,8 @@ Form::~Form() {
 	std::cout << "Form destructor called" << std::endl;
 }
 
+// FUNCTIONS
+
 std::string Form::getName() const {
 	return this->name;
 }
@@ -40,13 +43,29 @@ int Form::getExcGrade() const {
 	return this->excGrade;
 }
 
-// FUNCTIONS
+void Form::beSigned(Bureaucrat& bureau) {
+	try {
+		Bureaucrat::signForm(bureau, *this);
+		this->sign = true;
+	}
+	catch (const std::exception &e) {
+		std::cerr << bureau.getName() << " couldn't sign " << this->getName() << " because: " << e.what() << std::endl;
+	}
+}
 
 void Form::checkGrades(int sGrade, int xGrade) {
 	if (sGrade <= 0 || xGrade <= 0)
 		throw Form::GradeTooHighException();
 	else if (sGrade > 150 || xGrade > 150)
 		throw Form::GradeTooLowException ();
+}
+
+const char *Form::GradeTooHighException::what() const throw() {
+	return "Grade too high, nobody would be able to sign this...not even the president.";
+}
+
+const char *Form::GradeTooLowException::what() const throw() {
+	return "Grade too low, this is a security risk since everyone can sign it.";
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& obj) {

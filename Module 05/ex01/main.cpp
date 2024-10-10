@@ -1,73 +1,39 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main ()
 {
 	try {
 		std::cout << "Try 1: " << std::endl;
-		Bureaucrat gradeLow("Tu Lou", 150);
+		Bureaucrat stan("Stan", 75);
+		Form form101("101", 74, 5);
+		std::cout << std::endl;
 
-		std::cout << gradeLow;
-		gradeLow.operator--();
-		std::cout << gradeLow;
+		std::cout << stan;
+		std::cout << form101;
+		form101.beSigned(stan);
+		std::cout << std::endl;
 	}
-	catch (Bureaucrat::GradeTooLowException& e) {
+	catch (std::exception& e) {
 		std::cerr << e.what();
 	}
-	catch (Bureaucrat::GradeTooHighException& e) {
-		std::cerr << e.what();
-	}
 
+	std::cout << std::endl;
+	std::cout << std::endl;
 	std::cout << std::endl;
 
 	try {
 		std::cout << "Try 2: " << std::endl;
-		Bureaucrat gradeHigh("Tu Hi", 1);
+		Bureaucrat mike("Mike", 1);
+		Form form101("416", 50, 5);
+		std::cout << std::endl;
 
-		std::cout << gradeHigh;
-		gradeHigh.operator++();
-		std::cout << gradeHigh;
+		std::cout << mike;
+		std::cout << form101;
+		form101.beSigned(mike);
+		std::cout << std::endl;
 	}
-	catch (Bureaucrat::GradeTooLowException& e) {
-		std::cerr << e.what();
-	}
-	catch (Bureaucrat::GradeTooHighException& e) {
-		std::cerr << e.what();
-	}
-
-	std::cout << std::endl;
-
-	try {
-		std::cout << "Try 3: " << std::endl;
-		Bureaucrat gradeHigh("Tu Hi", 0);
-
-		std::cout << gradeHigh;
-	}
-	catch (Bureaucrat::GradeTooLowException& e) {
-		std::cerr << e.what();
-	}
-	catch (Bureaucrat::GradeTooHighException& e) {
-		std::cerr << e.what();
-	}
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	try {
-		std::cout << "Try 4 [Normal]: " << std::endl;
-		Bureaucrat gradeHigh("Mike", 5);
-
-		std::cout << gradeHigh;
-		gradeHigh.operator++();
-		gradeHigh.operator++();
-		gradeHigh.operator++();
-		std::cout << gradeHigh;
-		gradeHigh.operator--();
-		std::cout << gradeHigh;
-	}
-	catch (Bureaucrat::GradeTooLowException& e) {
-		std::cerr << e.what();
-	}
-	catch (Bureaucrat::GradeTooHighException& e) {
+	catch (std::exception& e) {
 		std::cerr << e.what();
 	}
 
