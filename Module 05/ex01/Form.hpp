@@ -11,22 +11,24 @@ private:
 	const int sigGrade;
 	const int excGrade;
 
+	void checkGrades(int sGrade, int xGrade);
 public:
 	Form();
-	Form(std::string nm, const int sGrade, const int xGrade);
+	Form(const std::string& nm, const int sGrade, const int xGrade);
 	Form(const Form& frm);
 	Form &operator=(const Form& frm);
 	~Form();
 
-	std::string getName();
-	bool isSigned();
-	int getSigGrade();
-	int getExcGrade();
+	std::string getName() const;
+	bool isSigned() const;
+	int getSigGrade() const;
+	int getExcGrade() const;
 
-	using GradeTooHighException = Bureaucrat::GradeTooHighException;
-	using GradeTooLowException = Bureaucrat::GradeTooLowException;
+	typedef Bureaucrat::GradeTooHighException GradeTooHighException;
+	typedef Bureaucrat::GradeTooLowException GradeTooLowException;
 
-}
+};
+
 std::ostream& operator<<(std::ostream& os, const Form& obj);
 
 #endif //FORM_HPP

@@ -87,7 +87,7 @@ Bureaucrat Bureaucrat::operator--() {
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj){
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
 	return os;
 }
