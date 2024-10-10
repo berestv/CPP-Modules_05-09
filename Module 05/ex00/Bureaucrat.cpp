@@ -6,15 +6,13 @@ Bureaucrat::Bureaucrat() : name("DefBureau"), grade(150) {
 
 Bureaucrat::Bureaucrat(std::string nm, int grd) : name(nm) {
 	std::cout << "Bureaucrat constructor called." << std::endl;
-	try {
+	setGrade(grd);
+	/*try {
 		setGrade(grd);
 	}
-	catch (const Bureaucrat::GradeTooHighException& e) {
+	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
-	}
-	catch (const Bureaucrat::GradeTooLowException& e) {
-		std::cerr << e.what() << std::endl;
-	}
+	}*/
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &brcrt) : name(brcrt.name), grade(brcrt.grade) {

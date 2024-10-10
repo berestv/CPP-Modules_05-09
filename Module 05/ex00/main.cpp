@@ -50,6 +50,7 @@ int main ()
 	}
 
 	std::cout << std::endl;
+	std::cout << std::endl;
 
 	try {
 		std::cout << "Try 4 [Normal]: " << std::endl;
