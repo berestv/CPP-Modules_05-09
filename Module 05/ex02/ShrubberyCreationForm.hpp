@@ -5,15 +5,15 @@
 
 class ShrubberyCreationForm : AForm {
 private:
-	const std::string name;
-	bool sign;
-	const int sigGrade;
-	const int excGrade;
-
+	std::string target;
 
 public:
-	static void checkGrades(int sGrade, int xGrade);
+	ShrubberyCreationForm(std::string trgt);
+	ShrubberyCreationForm(const ShrubberyCreationForm& scf);
+	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& scf);
+	~ShrubberyCreationForm();
 
+	void execute(const Bureaucrat& bureau) const;
 };
 
 #endif //SHRUBBERYCREATIONFORM_HPP

@@ -1,21 +1,19 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string trgt) : name("RobotomyRequestForm"), target(trgt), sign(false), sigGrade(72), excGrade(45) {
+RobotomyRequestForm::RobotomyRequestForm(std::string trgt) :
+		AForm("RobotomyRequestForm", 72, 45), target(trgt) {
 	std::cout << "RobotomyRequestForm constructor called." << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rrf) :
-name(rrf.name), target(rrf.target), sign(rrf.isSigned()), sigGrade(rrf.sigGrade), excGrade(rrf.excGrade) {
+		AForm("RobotomyRequestForm", 72, 45), target(rrf.target) {
 	std::cout << "RobotomyRequestForm copy constructor called." << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &rrf) {
 	std::cout << "RobotomyRequestForm assignment operator called." << std::endl;
 	if (this != &rrf)
-	{
 		this->target = rrf.target;
-		this->sign = rrf.sign;
-	}
 	return *this;
 }
 
