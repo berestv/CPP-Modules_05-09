@@ -27,9 +27,11 @@ $(OBJDIR)/%.o: %.cpp
 
 clean:
 		$(RM) $(OBJ)
+		$(RM) *_shrubbery
 
 fclean:
 		$(RM) $(OBJ) $(NAME) $(OBJDIR)
+		$(RM) *_shrubbery
 
 re: fclean all
 
