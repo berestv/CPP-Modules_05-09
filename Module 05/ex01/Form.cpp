@@ -17,7 +17,7 @@ AForm::AForm(const AForm &frm) : name(frm.name), sign(frm.sign), sigGrade(frm.si
 AForm &AForm::operator=(const AForm &frm) {
 	std::cout << "AForm copy assignment operator called." << std::endl;
 	if(this == &frm)
-		*this = frm;
+		this->sign = frm.sign;
 	return *this;
 }
 
