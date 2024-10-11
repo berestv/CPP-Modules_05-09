@@ -60,11 +60,14 @@ void Bureaucrat::setGrade(int grd) {
 		this->grade = grd;
 }
 
-void Bureaucrat::signForm(AForm& frm) const {
-	if (frm.getSigGrade() >= this->getGrade())
-		std::cout << this->getName() << " signed " << frm.getName() << "." << std::endl;
-	else
-		throw Bureaucrat::GradeTooLowException();
+void Bureaucrat::signForm(AForm& frm) {
+	try {
+		frm.beSigned(*this);
+		std::cout << frm.getName() << " was signed by " << this->getName() << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cerr << this->getName() << " couldn't sign " << frm.getName() << " because: " << e.what() << std::endl;
+	}
 }
 
 void Bureaucrat::executeForm(const AForm &form) const {

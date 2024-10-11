@@ -21,7 +21,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
-	void signForm(AForm& frm) const;
+	void signForm(AForm& frm);
 	void executeForm(AForm const & form) const;
 
 	Bureaucrat operator++();
