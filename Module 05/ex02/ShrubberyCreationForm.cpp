@@ -54,9 +54,9 @@ void ShrubberyCreationForm::execute(const Bureaucrat &bureau) const {
 		shrubTree << "                              %@bd%%%bd%%:;                      " << std::endl;
 		shrubTree << "                                #@%%%%%:;;                       " << std::endl;
 		shrubTree << "                                %@@%%%::;                        " << std::endl;
-		shrubTree << "                                %@@@%(o);  . '                   " << std::endl;
-		shrubTree << "                                %@@@o%;:(.,'                     " << std::endl;
-		shrubTree << "                            `.. %@@@o%::;                        " << std::endl;
+		shrubTree << "                                %@@@%(o);   /``                  " << std::endl;
+		shrubTree << "                                %@@@o%;:(.~'                     " << std::endl;
+		shrubTree << "                            `;. %@@@o%::;                        " << std::endl;
 		shrubTree << "                               `)@@@o%::;                        " << std::endl;
 		shrubTree << "                                %@@(o)::;                        " << std::endl;
 		shrubTree << "                               .%@@@@%::;                        " << std::endl;
