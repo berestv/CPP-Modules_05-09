@@ -23,5 +23,13 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 // FUNCTIONS
 
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
-	
+	try {
+		if (executor.getGrade() < this->getExcGrade() || !this->isSigned())
+			throw Bureaucrat::GradeTooLowException();
+
+		std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cerr << "Could not execute order 66: " << e.what() << std::endl;
+	}
 }
