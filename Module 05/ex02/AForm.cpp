@@ -45,7 +45,7 @@ int AForm::getExcGrade() const {
 
 void AForm::beSigned(Bureaucrat& bureau) {
 	try {
-		Bureaucrat::signAForm(bureau, *this);
+		Bureaucrat::signForm(bureau, *this);
 		this->sign = true;
 	}
 	catch (const std::exception &e) {
