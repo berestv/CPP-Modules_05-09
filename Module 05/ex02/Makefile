@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 RM = rm -rf
 
 # Project name
-NAME = maggots
+NAME = formsSRP
 SRC = main.cpp \
  		Bureaucrat.cpp \
  		PresidentialPardonForm.cpp \

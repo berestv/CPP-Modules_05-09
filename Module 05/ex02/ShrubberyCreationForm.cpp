@@ -23,55 +23,53 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 // FUNCTIONS
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
-	try {
-		if (executor.getGrade() < this->getExcGrade() || !this->isSigned())
-			throw Bureaucrat::GradeTooLowException();
-		std::string filename = this->target;
-		filename.append("_shrubbery");
+	if (executor.getGrade() > this->getExcGrade())
+		throw Bureaucrat::GradeTooLowException();
+	else if (!this->isSigned())
+		throw AForm::NotSigned();
 
-		std::ofstream shrubTree(filename.c_str());
+	std::string filename = this->target;
+	filename.append("_shrubbery");
 
-		if (!shrubTree.is_open())
-			throw ShrubberyCreationForm::CouldNotCreateFile();
+	std::ofstream shrubTree(filename.c_str());
 
-		shrubTree << "---------------------      ASCII TREE!      ---------------------" << std::endl;
-		shrubTree << "                                                         .       " << std::endl;
-		shrubTree << "                                              .         ;        " << std::endl;
-		shrubTree << "                 .              .              ;%     ;;         " << std::endl;
-		shrubTree << "                   ,           ,                :;%  %;          " << std::endl;
-		shrubTree << "                    :         ;                   :;%;'     .,   " << std::endl;
-		shrubTree << "           ,.        %;     %;            ;        %;'    ,;     " << std::endl;
-		shrubTree << "             ;       ;%;  %%;        ,     %;    ;%;    ,%'      " << std::endl;
-		shrubTree << "              %;       %;%;      ,  ;       %;  ;%;   ,%;'       " << std::endl;
-		shrubTree << "               ;%;      %;        ;%;        % ;%;  ,%;'         " << std::endl;
-		shrubTree << "                `%;.     ;%;     %;'         `;%%;.%;'           " << std::endl;
-		shrubTree << "                 `:;%.    ;%%. %@;        %; ;@%;%'              " << std::endl;
-		shrubTree << "                    `:%;.  :;bd%;          %;@%;'                " << std::endl;
-		shrubTree << "                      `@%:.  :;%.         ;@@%;'                 " << std::endl;
-		shrubTree << "                        `@%.  `;@%.      ;@@%;                   " << std::endl;
-		shrubTree << "                          `@%%. `@%%    ;@@%;                    " << std::endl;
-		shrubTree << "                            ;@%. :@%%  %@@%;                     " << std::endl;
-		shrubTree << "                              %@bd%%%bd%%:;                      " << std::endl;
-		shrubTree << "                                #@%%%%%:;;                       " << std::endl;
-		shrubTree << "                                %@@%%%::;                        " << std::endl;
-		shrubTree << "                                %@@@%(o);   /``                  " << std::endl;
-		shrubTree << "                                %@@@o%;:(.~'                     " << std::endl;
-		shrubTree << "                            `;. %@@@o%::;                        " << std::endl;
-		shrubTree << "                               `)@@@o%::;                        " << std::endl;
-		shrubTree << "                                %@@(o)::;                        " << std::endl;
-		shrubTree << "                               .%@@@@%::;                        " << std::endl;
-		shrubTree << "                               ;%@@@@%::;.                       " << std::endl;
-		shrubTree << "                              ;%@@@@%%:;;;.                      " << std::endl;
-		shrubTree << "                          ...;%@@@@@%%:;;;;,..                   " << std::endl;
-		shrubTree << "-----------------------------------------------------------------" << std::endl;
+	if (!shrubTree.is_open())
+		throw ShrubberyCreationForm::CouldNotCreateFile();
 
-		shrubTree.close();
+	shrubTree << "---------------------      ASCII TREE!      ---------------------" << std::endl;
+	shrubTree << "                                                         .       " << std::endl;
+	shrubTree << "                                              .         ;        " << std::endl;
+	shrubTree << "                 .              .              ;%     ;;         " << std::endl;
+	shrubTree << "                   ,           ,                :;%  %;          " << std::endl;
+	shrubTree << "                    :         ;                   :;%;'     .,   " << std::endl;
+	shrubTree << "           ,.        %;     %;            ;        %;'    ,;     " << std::endl;
+	shrubTree << "             ;       ;%;  %%;        ,     %;    ;%;    ,%'      " << std::endl;
+	shrubTree << "              %;       %;%;      ,  ;       %;  ;%;   ,%;'       " << std::endl;
+	shrubTree << "               ;%;      %;        ;%;        % ;%;  ,%;'         " << std::endl;
+	shrubTree << "                `%;.     ;%;     %;'         `;%%;.%;'           " << std::endl;
+	shrubTree << "                 `:;%.    ;%%. %@;        %; ;@%;%'              " << std::endl;
+	shrubTree << "                    `:%;.  :;bd%;          %;@%;'                " << std::endl;
+	shrubTree << "                      `@%:.  :;%.         ;@@%;'                 " << std::endl;
+	shrubTree << "                        `@%.  `;@%.      ;@@%;                   " << std::endl;
+	shrubTree << "                          `@%%. `@%%    ;@@%;                    " << std::endl;
+	shrubTree << "                            ;@%. :@%%  %@@%;                     " << std::endl;
+	shrubTree << "                              %@bd%%%bd%%:;                      " << std::endl;
+	shrubTree << "                                #@%%%%%:;;                       " << std::endl;
+	shrubTree << "                                %@@%%%::;                        " << std::endl;
+	shrubTree << "                                %@@@%(o);   /``                  " << std::endl;
+	shrubTree << "                                %@@@o%;:(.~'                     " << std::endl;
+	shrubTree << "                            `;. %@@@o%::;                        " << std::endl;
+	shrubTree << "                               `)@@@o%::;                        " << std::endl;
+	shrubTree << "                                %@@(o)::;                        " << std::endl;
+	shrubTree << "                               .%@@@@%::;                        " << std::endl;
+	shrubTree << "                               ;%@@@@%::;.                       " << std::endl;
+	shrubTree << "                              ;%@@@@%%:;;;.                      " << std::endl;
+	shrubTree << "                          ...;%@@@@@%%:;;;;,..                   " << std::endl;
+	shrubTree << "-----------------------------------------------------------------" << std::endl;
 
-		std::cout << "Shrubbery tree created successfully. CO2 is no more." << std::endl;
-	}
-	catch (const std::exception& e) {
-		std::cerr << "Could not execute order 66: " << e.what() << std::endl;
-	}
+	shrubTree.close();
+
+	std::cout << "Shrubbery tree created successfully. CO2 is no more." << std::endl;
 }
 
 const char *ShrubberyCreationForm::CouldNotCreateFile::what() const throw() {

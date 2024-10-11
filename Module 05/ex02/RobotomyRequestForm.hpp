@@ -7,7 +7,7 @@
 #include <ctime>
 #include <unistd.h>
 
-class RobotomyRequestForm : AForm {
+class RobotomyRequestForm : public AForm {
 private:
 	std::string target;
 

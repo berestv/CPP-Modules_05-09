@@ -76,7 +76,7 @@ void Bureaucrat::executeForm(const AForm &form) const {
 		std::cout << this->getName() << " executed " << form.getName() << "." << std::endl;
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Could not execute order 66: " << e.what() << std::endl;
 	}
 }
 

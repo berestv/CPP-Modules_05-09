@@ -45,7 +45,7 @@ int AForm::getExcGrade() const {
 
 void AForm::beSigned(Bureaucrat& bureau) {
 	if (this->sigGrade < bureau.getGrade())
-		throw AForm::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 
 	this->sign = true;
 }
@@ -63,6 +63,10 @@ const char *AForm::GradeTooHighException::what() const throw() {
 
 const char *AForm::GradeTooLowException::what() const throw() {
 	return "Grade too low, this is a security risk since everyone can sign it.";
+}
+
+const char *AForm::NotSigned::what() const throw() {
+	return "This form hasn't been signed yet.";
 }
 
 std::ostream& operator<<(std::ostream& os, const AForm& obj) {
