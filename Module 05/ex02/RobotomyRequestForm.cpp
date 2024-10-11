@@ -23,6 +23,23 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 
 // FUNCTIONS
 
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+	try {
+		if (executor.getGrade() < this->getExcGrade() || !this->isSigned())
+			throw AForm::GradeTooLowException();
+
+		std::cout << "* making drilling noises *" << std::endl;
+
+		if (!russianRoulette())
+			throw RobotomyRequestForm::RobotomyFailed();
+		std::cout << this->target << " has been robotomized successfully!" << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cerr << "Could not execute order 66: " << e.what() << std::endl;
+	}
+
+}
+
 bool RobotomyRequestForm::russianRoulette() {
 	srand(static_cast<unsigned>(time(0)) ^ getpid());
 
@@ -31,4 +48,8 @@ bool RobotomyRequestForm::russianRoulette() {
 	if (rnd % 2 == 0)
 		return true;
 	return false;
+}
+
+const char *RobotomyRequestForm::RobotomyFailed::what() const throw() {
+	return "Robotomy failed! Maybe try it with a particle accelerator next time?";
 }

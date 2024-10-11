@@ -15,7 +15,7 @@ public:
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& scf);
 	~ShrubberyCreationForm();
 
-	void execute(const Bureaucrat& bureau) const;
+	void execute(const Bureaucrat & executor) const;
 
 	class CouldNotCreateFile : std::exception {
 	public:

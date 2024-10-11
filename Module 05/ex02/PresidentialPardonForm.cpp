@@ -22,3 +22,6 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 
 // FUNCTIONS
 
+void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
+	
+}
