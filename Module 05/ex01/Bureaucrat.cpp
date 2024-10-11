@@ -60,7 +60,7 @@ void Bureaucrat::setGrade(int grd) {
 		this->grade = grd;
 }
 
-void Bureaucrat::signForm(Bureaucrat& bureau, Form& frm) {
+void Bureaucrat::signForm(Bureaucrat& bureau, AForm& frm) {
 	if (frm.getSigGrade() >= bureau.getGrade())
 		std::cout << bureau.getName() << " signed " << frm.getName() << "." << std::endl;
 	else

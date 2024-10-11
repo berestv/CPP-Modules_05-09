@@ -5,7 +5,7 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 private:
 	const std::string name;
 	bool sign;
@@ -14,11 +14,11 @@ private:
 
 	static void checkGrades(int sGrade, int xGrade);
 public:
-	Form();
-	Form(const std::string& nm, int sGrade, int xGrade);
-	Form(const Form& frm);
-	Form &operator=(const Form& frm);
-	~Form();
+	AForm();
+	AForm(const std::string& nm, int sGrade, int xGrade);
+	AForm(const AForm& frm);
+	AForm &operator=(const AForm& frm);
+	~AForm();
 
 	std::string getName() const;
 	bool isSigned() const;
@@ -37,6 +37,6 @@ public:
 	};
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& obj);
+std::ostream& operator<<(std::ostream& os, const AForm& obj);
 
 #endif //FORM_HPP

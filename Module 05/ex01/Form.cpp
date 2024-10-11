@@ -1,49 +1,49 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : name("Default"), sign(false), sigGrade(1), excGrade(1){
-	std::cout << "Form default constructor called." << std::endl;
+AForm::AForm() : name("Default"), sign(false), sigGrade(1), excGrade(1){
+	std::cout << "AForm default constructor called." << std::endl;
 }
 
-Form::Form(const std::string& nm, const int sGrade, const int xGrade) : name(nm), sign(false), sigGrade(sGrade), excGrade(xGrade) {
-	std::cout << "Form constructor called." << std::endl;
+AForm::AForm(const std::string& nm, const int sGrade, const int xGrade) : name(nm), sign(false), sigGrade(sGrade), excGrade(xGrade) {
+	std::cout << "AForm constructor called." << std::endl;
 	checkGrades(sGrade, xGrade);
 }
 
-Form::Form(const Form &frm) : name(frm.name), sign(frm.sign), sigGrade(frm.sigGrade), excGrade(frm.excGrade) {
-	std::cout << "Form copy constructor called." << std::endl;
+AForm::AForm(const AForm &frm) : name(frm.name), sign(frm.sign), sigGrade(frm.sigGrade), excGrade(frm.excGrade) {
+	std::cout << "AForm copy constructor called." << std::endl;
 }
 
-Form &Form::operator=(const Form &frm) {
-	std::cout << "Form copy assignment operator called." << std::endl;
+AForm &AForm::operator=(const AForm &frm) {
+	std::cout << "AForm copy assignment operator called." << std::endl;
 	if(this == &frm)
 		*this = frm;
 	return *this;
 }
 
-Form::~Form() {
-	std::cout << "Form destructor called" << std::endl;
+AForm::~AForm() {
+	std::cout << "AForm destructor called" << std::endl;
 }
 
 // FUNCTIONS
 
-std::string Form::getName() const {
+std::string AForm::getName() const {
 	return this->name;
 }
 
-bool Form::isSigned() const {
+bool AForm::isSigned() const {
 	return sign;
 }
 
-int Form::getSigGrade() const {
+int AForm::getSigGrade() const {
 	return this->sigGrade;
 }
 
-int Form::getExcGrade() const {
+int AForm::getExcGrade() const {
 	return this->excGrade;
 }
 
-void Form::beSigned(Bureaucrat& bureau) {
+void AForm::beSigned(Bureaucrat& bureau) {
 	try {
 		Bureaucrat::signForm(bureau, *this);
 		this->sign = true;
@@ -53,23 +53,23 @@ void Form::beSigned(Bureaucrat& bureau) {
 	}
 }
 
-void Form::checkGrades(int sGrade, int xGrade) {
+void AForm::checkGrades(int sGrade, int xGrade) {
 	if (sGrade <= 0 || xGrade <= 0)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	else if (sGrade > 150 || xGrade > 150)
-		throw Form::GradeTooLowException ();
+		throw AForm::GradeTooLowException ();
 }
 
-const char *Form::GradeTooHighException::what() const throw() {
+const char *AForm::GradeTooHighException::what() const throw() {
 	return "Grade too high, nobody would be able to sign this...not even the president.";
 }
 
-const char *Form::GradeTooLowException::what() const throw() {
+const char *AForm::GradeTooLowException::what() const throw() {
 	return "Grade too low, this is a security risk since everyone can sign it.";
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& obj) {
-	os << "Form: " << obj.getName() << ". Sign Grade: " << obj.getSigGrade() <<
+std::ostream& operator<<(std::ostream& os, const AForm& obj) {
+	os << "AForm: " << obj.getName() << ". Sign Grade: " << obj.getSigGrade() <<
 	". Execution Grade: " << obj.getExcGrade() << "." << std::endl;
 	return os;
 };
