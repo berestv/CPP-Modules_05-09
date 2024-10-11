@@ -21,7 +21,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
-	static void signForm(Bureaucrat& bureau, AForm& frm);
+	void signForm(AForm& frm);
 
 	Bureaucrat operator++();
 	Bureaucrat operator--();

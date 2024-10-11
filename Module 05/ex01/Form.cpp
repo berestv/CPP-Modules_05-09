@@ -44,13 +44,10 @@ int AForm::getExcGrade() const {
 }
 
 void AForm::beSigned(Bureaucrat& bureau) {
-	try {
-		Bureaucrat::signForm(bureau, *this);
-		this->sign = true;
-	}
-	catch (const std::exception &e) {
-		std::cerr << bureau.getName() << " couldn't sign " << this->getName() << " because: " << e.what() << std::endl;
-	}
+	if (this->sigGrade < bureau.getGrade())
+		throw AForm::GradeTooLowException();
+
+	this->sign = true;
 }
 
 void AForm::checkGrades(int sGrade, int xGrade) {
