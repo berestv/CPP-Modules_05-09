@@ -6,39 +6,40 @@
 
 int main ()
 {
-	try {
-		std::cout << "Try 1: " << std::endl;
-		Bureaucrat stan("Stan", 75);
-		ShrubberyCreationForm form101("home");
-		std::cout << std::endl;
-
-		std::cout << stan;
-		std::cout << form101;
-		form101.beSigned(stan);
-		std::cout << std::endl;
-	}
-	catch (std::exception& e) {
-		std::cerr << e.what();
-	}
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
 
 	try {
-		std::cout << "Try 2: " << std::endl;
-		Bureaucrat mike("Mike", 1);
-		AForm form101("416", 50, 5);
-		std::cout << std::endl;
-
-		std::cout << mike;
-		std::cout << form101;
-		form101.beSigned(mike);
-		std::cout << std::endl;
+		Bureaucrat BurA("other", 100);
+		ShrubberyCreationForm FormA("Formâge A");
+		std::cout << FormA;
+		BurA.signForm(FormA);
+		BurA.executeForm(FormA);
+		std::cout << FormA << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
-	catch (std::exception& e) {
-		std::cerr << e.what();
+	std::cout << "============" << std::endl;
+	try {
+		Bureaucrat BurA("other", 72);
+		RobotomyRequestForm FormA("hellooo");
+		std::cout << FormA << std::endl;
+		FormA.beSigned(BurA);
+		std::cout << FormA << std::endl;
+		BurA.executeForm(FormA);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
+	std::cout << "============" << std::endl;
+	try {
+		Bureaucrat BurA("other", 24);
+		PresidentialPardonForm FormA("hellooo");
+		std::cout << FormA << std::endl;
+		FormA.beSigned(BurA);
+		BurA.executeForm(FormA);
+		std::cout << FormA << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "============" << std::endl;
 
 	std::cout << std::endl;
 }

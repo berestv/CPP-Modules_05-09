@@ -5,7 +5,7 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
-class ShrubberyCreationForm : AForm {
+class ShrubberyCreationForm : public AForm {
 private:
 	std::string target;
 

@@ -60,11 +60,21 @@ void Bureaucrat::setGrade(int grd) {
 		this->grade = grd;
 }
 
-void Bureaucrat::signForm(Bureaucrat& bureau, AForm& frm) {
-	if (frm.getSigGrade() >= bureau.getGrade())
-		std::cout << bureau.getName() << " signed " << frm.getName() << "." << std::endl;
+void Bureaucrat::signForm(AForm& frm) const {
+	if (frm.getSigGrade() >= this->getGrade())
+		std::cout << this->getName() << " signed " << frm.getName() << "." << std::endl;
 	else
 		throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::executeForm(const AForm &form) const {
+	try {
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << "." << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 Bureaucrat Bureaucrat::operator++() {
