@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Form.hpp"
 
-class AForm;
+class Form;
 
 class Bureaucrat {
 private:
@@ -21,7 +21,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
-	void signForm(AForm& frm);
+	void signForm(Form& frm);
 
 	Bureaucrat operator++();
 	Bureaucrat operator--();

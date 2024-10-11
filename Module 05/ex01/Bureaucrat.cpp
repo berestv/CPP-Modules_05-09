@@ -60,7 +60,7 @@ void Bureaucrat::setGrade(int grd) {
 		this->grade = grd;
 }
 
-void Bureaucrat::signForm(AForm& frm) {
+void Bureaucrat::signForm(Form& frm) {
 	try {
 		frm.beSigned(*this);
 		std::cout << frm.getName() << " was signed by " << this->getName() << std::endl;
