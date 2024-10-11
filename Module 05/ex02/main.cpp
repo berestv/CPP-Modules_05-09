@@ -1,12 +1,12 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main ()
 {
 	try {
 		std::cout << "Try 1: " << std::endl;
 		Bureaucrat stan("Stan", 75);
-		Form form101("101", 74, 5);
+		AForm form101("101", 74, 5);
 		std::cout << std::endl;
 
 		std::cout << stan;
@@ -25,7 +25,7 @@ int main ()
 	try {
 		std::cout << "Try 2: " << std::endl;
 		Bureaucrat mike("Mike", 1);
-		Form form101("416", 50, 5);
+		AForm form101("416", 50, 5);
 		std::cout << std::endl;
 
 		std::cout << mike;
