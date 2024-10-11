@@ -1,12 +1,15 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main ()
 {
 	try {
 		std::cout << "Try 1: " << std::endl;
 		Bureaucrat stan("Stan", 75);
-		AForm form101("101", 74, 5);
+		ShrubberyCreationForm form101("home");
 		std::cout << std::endl;
 
 		std::cout << stan;

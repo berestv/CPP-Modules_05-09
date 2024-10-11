@@ -2,6 +2,8 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : AForm {
 private:
@@ -14,6 +16,11 @@ public:
 	~ShrubberyCreationForm();
 
 	void execute(const Bureaucrat& bureau) const;
+
+	class CouldNotCreateFile : std::exception {
+	public:
+		virtual const char * what() const throw();
+	};
 };
 
 #endif //SHRUBBERYCREATIONFORM_HPP
