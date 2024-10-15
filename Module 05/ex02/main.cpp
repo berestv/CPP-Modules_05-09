@@ -34,7 +34,6 @@ int main ()
 		RobotomyRequestForm form28B("Bender");
 		PresidentialPardonForm pardonMe("Waltuh");
 
-
 		std::cout << std::endl;
 		std::cout << mike;
 		std::cout << form28B;
