@@ -31,6 +31,7 @@ int main ()
 
 	try {
 		Bureaucrat mike("Mike", 1);
+		Bureaucrat dmb("Dumbureau", 150);
 		RobotomyRequestForm form28B("Bender");
 		PresidentialPardonForm pardonMe("Waltuh");
 
@@ -38,6 +39,7 @@ int main ()
 		std::cout << mike;
 		std::cout << form28B;
 
+		dmb.signForm(form28B);
 		mike.signForm(form28B);
 		mike.executeForm(form28B);
 
@@ -46,6 +48,7 @@ int main ()
 
 		mike.executeForm(pardonMe);
 		mike.signForm(pardonMe);
+		mike.executeForm(pardonMe);
 		std::cout << std::endl;
 	}
 	catch (std::exception &e) {
