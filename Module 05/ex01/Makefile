@@ -13,7 +13,7 @@ RESET   = \033[0m
 NAME = maggots
 SRC = main.cpp Bureaucrat.cpp Form.cpp
 
-OBJDIR = bin
+OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 # RULES

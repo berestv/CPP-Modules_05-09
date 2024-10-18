@@ -18,7 +18,7 @@ SRC = main.cpp \
  		ShrubberyCreationForm.cpp \
  		AForm.cpp \
 
-OBJDIR = bin
+OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 # RULES

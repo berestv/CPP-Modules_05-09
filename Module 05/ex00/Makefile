@@ -13,7 +13,7 @@ RESET   = \033[0m
 NAME = bureaucrat
 SRC = main.cpp Bureaucrat.cpp
 
-OBJDIR = bin
+OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 # RULES
