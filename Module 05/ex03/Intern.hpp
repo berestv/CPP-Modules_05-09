@@ -10,7 +10,13 @@ public:
 	Intern& operator=(const Intern& in);
 	~Intern();
 
-	AForm* makeForm(std::string fName, std::string target);
+	AForm* makeForm(const std::string& fName, const std::string& target);
+
+	class WrongArgsException : public std::exception {
+	public:
+		virtual const char *what() const throw();
+	};
+
 };
 
 #endif //INTERN_HPP

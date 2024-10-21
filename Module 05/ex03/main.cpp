@@ -3,21 +3,26 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main ()
 {
 	try {
 		Bureaucrat steve("Steve", 140);
-		ShrubberyCreationForm form28C("Tree");
+
+		Intern someRandomIntern;
+		AForm* rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
 		std::cout << std::endl;
 		std::cout << steve;
-		std::cout << form28C;
+		std::cout << rrf;
 
-		steve.signForm(form28C);
-		steve.executeForm(form28C);
+		steve.signForm(rrf);
+		steve.executeForm(rrf);
 
 		Bureaucrat highIQ("Steve", 1);
-		highIQ.executeForm(form28C);
+		highIQ.executeForm(rrf);
 
 		std::cout << std::endl;
 	}
@@ -29,7 +34,7 @@ int main ()
 	std::cout << std::endl;
 
 
-	try {
+/*	try {
 		Bureaucrat mike("Mike", 1);
 		Bureaucrat dmb("Dumbureau", 150);
 		RobotomyRequestForm form28B("Bender");
@@ -53,5 +58,5 @@ int main ()
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
-	}
+	}*/
 }
