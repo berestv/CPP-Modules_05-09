@@ -17,6 +17,7 @@ SRC = main.cpp \
  		RobotomyRequestForm.cpp \
  		ShrubberyCreationForm.cpp \
  		AForm.cpp \
+ 		Intern.cpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
