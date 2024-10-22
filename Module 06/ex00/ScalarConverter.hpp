@@ -5,7 +5,7 @@
 
 class ScalarConverter {
 public:
-	static void convert(std::string stRep);
+	virtual void convert(std::string stRep);
 };
 
 #endif //SCALARCONVERTER_HPP
