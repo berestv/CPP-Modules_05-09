@@ -18,21 +18,17 @@ int main ()
 		std::cout << steve;
 		std::cout << rrf;
 
-		steve.signForm(rrf);
-		steve.executeForm(rrf);
+		steve.signForm(*rrf);
+		steve.executeForm(*rrf);
 
 		Bureaucrat highIQ("Steve", 1);
-		highIQ.executeForm(rrf);
+		highIQ.executeForm(*rrf);
 
 		std::cout << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-
 
 /*	try {
 		Bureaucrat mike("Mike", 1);
