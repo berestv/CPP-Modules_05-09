@@ -21,7 +21,7 @@ int main ()
 		steve.signForm(*rrf);
 		steve.executeForm(*rrf);
 
-		Bureaucrat highIQ("Steve", 1);
+		Bureaucrat highIQ("HiQ", 1);
 		highIQ.executeForm(*rrf);
 
 		std::cout << std::endl;
