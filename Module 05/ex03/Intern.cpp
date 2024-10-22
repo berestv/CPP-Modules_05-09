@@ -19,7 +19,7 @@ Intern &Intern::operator=(const Intern &in) {
 }
 
 Intern::~Intern() {
-
+	std::cout << "Intern destructor called." << std::endl;
 }
 
 // FUNCTIONS
@@ -38,11 +38,11 @@ AForm *Intern::makeForm(const std::string& fName, const std::string& target) {
 
 		switch (idx) {
 			case 0:
-				return new PresidentialPardonForm(target);
+				return (new PresidentialPardonForm(target));
 			case 1:
-				return new RobotomyRequestForm(target);
+				return (new RobotomyRequestForm(target));
 			case 2:
-				return new ShrubberyCreationForm(target);
+				return (new ShrubberyCreationForm(target));
 			default:
 				throw WrongArgsException();
 		}

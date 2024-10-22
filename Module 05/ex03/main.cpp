@@ -5,7 +5,7 @@
 int main ()
 {
 	try {
-		Bureaucrat steve("Steve", 140);
+		Bureaucrat steve("Steve", 70);
 
 		Intern someRandomIntern;
 		AForm* rrf;
@@ -22,34 +22,9 @@ int main ()
 		highIQ.executeForm(*rrf);
 
 		std::cout << std::endl;
+		delete rrf;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-
-/*	try {
-		Bureaucrat mike("Mike", 1);
-		Bureaucrat dmb("Dumbureau", 150);
-		RobotomyRequestForm form28B("Bender");
-		PresidentialPardonForm pardonMe("Waltuh");
-
-		std::cout << std::endl;
-		std::cout << mike;
-		std::cout << form28B;
-
-		dmb.signForm(form28B);
-		mike.signForm(form28B);
-		mike.executeForm(form28B);
-
-		std::cout << std::endl;
-		std::cout << std::endl;
-
-		mike.executeForm(pardonMe);
-		mike.signForm(pardonMe);
-		mike.executeForm(pardonMe);
-		std::cout << std::endl;
-	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}*/
 }
