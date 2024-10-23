@@ -4,13 +4,12 @@
 #include <iostream>
 
 class ScalarConverter {
-private:
+public:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& sc);
 	ScalarConverter &operator=(const ScalarConverter& sc);
 	~ScalarConverter();
 
-public:
 	virtual void convert(std::string stRep);
 
 	class InvalidInputExc : std::exception {
