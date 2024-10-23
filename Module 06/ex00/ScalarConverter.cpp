@@ -23,9 +23,9 @@ void ScalarConverter::convert(std::string stRep) {
 	if ((*endptr != '\0' && strcmp("f", endptr) != 0) || dbl > 2147483647 || dbl < -2147483648)
 		throw ScalarConverter::InvalidInputExc();
 
-
 	std::cout << dbl << std::endl;
-	std::cout << endptr << std::endl;
+	std::cout << endptr << std::endl << std::endl;
+
 }
 
 const char *ScalarConverter::InvalidInputExc::what() const throw() {
