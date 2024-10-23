@@ -10,7 +10,7 @@ RESET   = \033[0m
 
 
 # Project name
-NAME = intern
+NAME = scalarConverter
 SRC = main.cpp \
  		ScalarConverter.cpp \
 
