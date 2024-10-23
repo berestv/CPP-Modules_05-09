@@ -2,6 +2,8 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 
 class ScalarConverter {
 public:
@@ -12,7 +14,7 @@ public:
 
 	virtual void convert(std::string stRep);
 
-	class InvalidInputExc : std::exception {
+	class InvalidInputExc : public std::exception {
 	public:
 		virtual const char * what() const throw();
 	};
