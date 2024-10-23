@@ -34,11 +34,11 @@ void print(double dbl, bool isDig) {
 
 	// FLOAT
 	std::cout << "float: ";
-	std::cout << static_cast<float>(dbl) << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(dbl) << static_cast<float>(dbl) << "f" << std::endl;
 
 	// DOUBLE
 	std::cout << "double: ";
-	std::cout << dbl << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << dbl << std::endl;
 }
 
 void ScalarConverter::convert(std::string stRep) {
