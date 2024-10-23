@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include <iomanip>
 
 class ScalarConverter {
 public:
