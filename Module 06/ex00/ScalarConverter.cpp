@@ -15,6 +15,19 @@ ScalarConverter::~ScalarConverter() {}
 
 // FUNCTIONS
 
+int decimals(double num){
+	double deci = num - floor(num);
+	int count = 0;
+
+	while (deci != 0 && count <= 6)
+	{
+		deci *= 10;
+		deci -= floor(deci);
+		count++;
+	}
+	return count;
+}
+
 void print(double dbl, bool isDig) {
 	// CHAR
 	std::cout << "char: ";
@@ -32,13 +45,14 @@ void print(double dbl, bool isDig) {
 	else
 		std::cout << static_cast<int>(dbl) << std::endl;
 
+	int deci = decimals(dbl) + 1;
 	// FLOAT
 	std::cout << "float: ";
-	std::cout << std::fixed << std::setprecision(dbl) << static_cast<float>(dbl) << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(deci) << static_cast<float>(dbl) << "f" << std::endl;
 
 	// DOUBLE
 	std::cout << "double: ";
-	std::cout << std::fixed << std::setprecision(1) << dbl << std::endl;
+	std::cout << std::fixed << std::setprecision(deci) << dbl << std::endl;
 }
 
 void ScalarConverter::convert(std::string stRep) {
@@ -50,12 +64,11 @@ void ScalarConverter::convert(std::string stRep) {
 		throw ScalarConverter::InvalidInputExc();
 
 	for (int i = 0; i < static_cast<int>(stRep.length()); i++) {
-		if (!isdigit(stRep[i]))
-			isDig = false;
 		if (stRep[i] == ',')
 			stRep[i] = '.';
+		if (!isdigit(stRep[i]) && stRep[i] != '.' && stRep[i] != 'f')
+			isDig = false;
 	}
-
 	print(dbl, isDig);
 }
 
