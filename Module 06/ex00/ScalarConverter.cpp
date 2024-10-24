@@ -58,10 +58,6 @@ void print(double dbl, bool isDig) {
 void ScalarConverter::convert(std::string stRep) {
 	char* endptr = NULL;
 	bool isDig = true;
-	double dbl = std::strtod(stRep.c_str(), &endptr);
-	
-	if ((*endptr != '\0' && strcmp("f", endptr) != 0))
-		throw ScalarConverter::InvalidInputExc();
 
 	for (int i = 0; i < static_cast<int>(stRep.length()); i++) {
 		if (stRep[i] == ',')
@@ -69,6 +65,11 @@ void ScalarConverter::convert(std::string stRep) {
 		if (!isdigit(stRep[i]) && stRep[i] != '.' && stRep[i] != 'f')
 			isDig = false;
 	}
+	double dbl = std::strtod(stRep.c_str(), &endptr);
+	
+	if ((*endptr != '\0' && strcmp("f", endptr) != 0))
+		throw ScalarConverter::InvalidInputExc();
+
 	print(dbl, isDig);
 }
 
