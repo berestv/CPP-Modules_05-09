@@ -8,9 +8,9 @@ Serialzier::~Serialzier() {}
 // FUNCTIONS
 
 uintptr_t Serialzier::serialize(Data *ptr) {
-
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 
 Data *Serialzier::deserialize(uintptr_t raw) {
-
+	return reinterpret_cast<Data*>(raw);
 }
