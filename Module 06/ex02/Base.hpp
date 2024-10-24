@@ -2,6 +2,8 @@
 #define BASE_HPP
 
 #include <iostream>
+#include <unistd.h>
+#include <cstdlib>
 // typeinfo
 // HA! Gotcha.
 
