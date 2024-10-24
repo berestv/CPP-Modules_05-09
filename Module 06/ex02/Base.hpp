@@ -14,4 +14,8 @@ public:
 	void identify(Base& p);
 };
 
+class A : public Base {
+
+};
+
 #endif //BASE_HPP
