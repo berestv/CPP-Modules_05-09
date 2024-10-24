@@ -5,16 +5,19 @@
 #include <cstdlib>
 #include <cstring>
 #include <iomanip>
+#include <sstream>
 #include <cmath>
 
 class ScalarConverter {
-public:
+private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& sc);
 	ScalarConverter &operator=(const ScalarConverter& sc);
+
+public:
 	~ScalarConverter();
 
-	virtual void convert(std::string stRep);
+	static void convert(std::string stRep);
 
 	class InvalidInputExc : public std::exception {
 	public:

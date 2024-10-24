@@ -17,14 +17,14 @@ ScalarConverter::~ScalarConverter() {}
 
 int decimals(double num){
 	double deci = num - floor(num);
-	int count = 0;
+	std::ostringstream oss;
+	oss << deci;
+	int count;
 
-	while (deci != 0 && count <= 6)
-	{
-		deci *= 10;
-		deci -= floor(deci);
-		count++;
-	}
+	if (deci == 0)
+		count = 1;
+	else
+		count = static_cast<int>(oss.str().length()) - 2;
 	return count;
 }
 
@@ -45,7 +45,7 @@ void print(double dbl, bool isDig) {
 	else
 		std::cout << static_cast<int>(dbl) << std::endl;
 
-	int deci = decimals(dbl) + 1;
+	int deci = decimals(dbl);
 	// FLOAT
 	std::cout << "float: ";
 	std::cout << std::fixed << std::setprecision(deci) << static_cast<float>(dbl) << "f" << std::endl;
