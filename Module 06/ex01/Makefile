@@ -12,7 +12,7 @@ RESET   = \033[0m
 # Project name
 NAME = serialization
 SRC = main.cpp \
- 		ScalarConverter.cpp \
+ 		Serializer.cpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
