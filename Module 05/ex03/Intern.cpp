@@ -30,11 +30,13 @@ AForm *Intern::makeForm(const std::string& fName, const std::string& target) {
 			throw WrongArgsException();
 
 		std::string strForms[3] = { "presidential pardon", "robotomy request", "shrubbery creation" };
-		int idx = 0;
+		int idx = -1;
 		for (int i = 0; i < 3; i++) {
 			if (strForms[i] == fName)
 				idx = i;
 		}
+		if (idx == -1)
+			throw WrongArgsException();
 
 		switch (idx) {
 			case 0:

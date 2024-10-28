@@ -9,8 +9,12 @@ int main ()
 
 		Intern someRandomIntern;
 		AForm* rrf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
+		std::cout << std::endl;
+		rrf = someRandomIntern.makeForm("robot request", "Bender");
+		std::cout << std::endl;
+
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		std::cout << std::endl;
 		std::cout << steve;
 		std::cout << *rrf;
@@ -19,6 +23,9 @@ int main ()
 		steve.executeForm(*rrf);
 
 		Bureaucrat highIQ("HiQ", 1);
+		std::cout << std::endl;
+		std::cout << highIQ;
+		std::cout << *rrf;
 		highIQ.executeForm(*rrf);
 
 		std::cout << std::endl;
