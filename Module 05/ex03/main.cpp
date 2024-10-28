@@ -13,7 +13,7 @@ int main ()
 
 		std::cout << std::endl;
 		std::cout << steve;
-		std::cout << rrf;
+		std::cout << *rrf;
 
 		steve.signForm(*rrf);
 		steve.executeForm(*rrf);
