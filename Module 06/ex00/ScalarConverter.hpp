@@ -13,9 +13,9 @@ private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& sc);
 	ScalarConverter &operator=(const ScalarConverter& sc);
+	~ScalarConverter();
 
 public:
-	~ScalarConverter();
 
 	static void convert(std::string stRep);
 
