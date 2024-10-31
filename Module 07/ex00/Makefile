@@ -12,7 +12,6 @@ RESET   = \033[0m
 # Project name
 NAME = fewFuncs
 SRC = main.cpp \
- 		ScalarConverter.cpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
