@@ -1,7 +1,8 @@
 #include "iter.hpp"
 
 int main() {
-	int arr[4] = { 0, 1, 2, 3 };
+	std::string arr[] = { "abc", "def", "ghi", "jkl" };
+	size_t len = sizeof(arr) / sizeof(arr[0]);
 
-	iter(arr, 4, print);
+	iter(arr, len, print);
 }
