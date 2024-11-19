@@ -12,6 +12,7 @@ RESET   = \033[0m
 # Project name
 NAME = iter
 SRC = main.cpp \
+		Array.tpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

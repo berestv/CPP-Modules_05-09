@@ -3,4 +3,12 @@
 
 #include <iostream>
 
+template <typename T>
+class Array {
+public:
+	Array();
+};
+
+#include "Array.tpp"
+
 #endif //ARRAY_HPP
