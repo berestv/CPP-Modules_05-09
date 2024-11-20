@@ -2,11 +2,22 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <string>
 
-template <typename T>
+template <class T>
 class Array {
+private:
+	T *elm;
+	unsigned int sz;
 public:
 	Array();
+	Array(unsigned int num);
+	Array(const Array& cpy);
+	Array &operator=(const Array& cpy);
+	~Array();
+
+	unsigned int size();
 };
 
 #include "Array.tpp"

@@ -10,7 +10,7 @@ RESET   = \033[0m
 
 
 # Project name
-NAME = iter
+NAME = array
 SRC = main.cpp \
 		Array.tpp \
 
