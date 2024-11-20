@@ -2,11 +2,8 @@
 #define ARRAY_HPP
 
 #include <iostream>
-#include <cstdlib>
-#include <string>
 
-template <class T>
-class Array {
+template <class T> class Array {
 private:
 	T *elm;
 	unsigned int sz;
