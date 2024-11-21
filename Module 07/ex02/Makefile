@@ -12,7 +12,6 @@ RESET   = \033[0m
 # Project name
 NAME = array
 SRC = main.cpp \
-		Array.tpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
@@ -30,11 +29,9 @@ $(OBJDIR)/%.o: %.cpp
 
 clean:
 		$(RM) $(OBJ)
-		$(RM) *_shrubbery
 
 fclean:
 		$(RM) $(OBJ) $(NAME) $(OBJDIR)
-		$(RM) *_shrubbery
 		echo "$(RED)Cleaned project files/folders. $(RESET)" ;
 
 re: fclean all
