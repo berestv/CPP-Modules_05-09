@@ -16,7 +16,6 @@ private:
 	~ScalarConverter();
 
 public:
-
 	static void convert(std::string stRep);
 
 	class InvalidInputExc : public std::exception {
