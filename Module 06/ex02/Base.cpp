@@ -33,7 +33,7 @@ void Base::identify(Base *p) {
 	else if (dynamic_cast<C*>(p))
 		std::cout << "C" << std::endl;
 	else
-		std::cout << "Doesn't match A, B or C" << std::endl;
+		std::cout << "NULL at " << &p << std::endl;
 	delete p;
 }
 
@@ -41,21 +41,23 @@ void Base::identify(Base &p) {
 	try {
 		(void)dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
-		return (void)delete &p;
+		return ;
 	}
 	catch (std::exception& e) {	}
 
 	try {
 		(void)dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
-		return (void)delete &p;
+		return ;
 	}
-	catch (std::exception& e) { }
+	catch (std::exception& e) {	}
 
 	try {
 		(void)dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
-		return (void)delete &p;
+		return ;
 	}
-	catch (std::exception& e) {	}
+	catch (std::exception& e) {
+		std::cout << "Casting failed." << std::endl;
+	}
 }
