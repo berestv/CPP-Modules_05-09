@@ -9,12 +9,12 @@ struct Data {
 	std::string name;
 };
 
-class Serialzier {
+class Serializer {
 private:
-	Serialzier();
-	Serialzier(const Serialzier& ser);
-	Serialzier &operator=(const Serialzier& ser);
-	~Serialzier();
+	Serializer();
+	Serializer(const Serializer& ser);
+	Serializer &operator=(const Serializer& ser);
+	~Serializer();
 
 public:
 	static uintptr_t serialize(Data* ptr);
