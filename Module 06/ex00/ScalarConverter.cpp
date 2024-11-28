@@ -19,12 +19,18 @@ int decimals(double num){
 	double deci = num - floor(num);
 	std::ostringstream oss;
 	oss << deci;
+
 	int count;
 
 	if (deci == 0)
 		count = 1;
 	else
-		count = static_cast<int>(oss.str().length()) - 2;
+	{
+		count = static_cast<int>(oss.str().length());
+		std::cout << "Len: " << count << std::endl;
+		if (count < 7)
+			count -= 2;
+	}
 	return count;
 }
 
@@ -45,14 +51,14 @@ void print(double dbl, bool isDig) {
 	else
 		std::cout << static_cast<int>(dbl) << std::endl;
 
-	int deci = decimals(dbl);
+	//int deci = decimals(dbl);
 	// FLOAT
 	std::cout << "float: ";
-	std::cout << std::fixed << std::setprecision(deci) << static_cast<float>(dbl) << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(decimals(dbl)) << static_cast<float>(dbl) << "f" << std::endl;
 
 	// DOUBLE
 	std::cout << "double: ";
-	std::cout << std::fixed << std::setprecision(deci) << dbl << std::endl;
+	std::cout << std::fixed << std::setprecision(decimals(dbl)) << dbl << std::endl;
 }
 
 void ScalarConverter::convert(std::string stRep) {
@@ -65,14 +71,23 @@ void ScalarConverter::convert(std::string stRep) {
 		if (!isdigit(stRep[i]) && stRep[i] != '.' && stRep[i] != 'f')
 			isDig = false;
 	}
-	double dbl = std::strtod(stRep.c_str(), &endptr);
-	
-	if ((*endptr != '\0' && strcmp("f", endptr) != 0))
-		throw ScalarConverter::InvalidInputExc();
+
+	double dbl;
+	if (isprint(stRep[0]) && !stRep[1] && (!isDig || stRep[0] == 'f'))
+	{
+		dbl = stRep[0] - 0;
+		isDig = true;
+	}
+	else
+	{
+		dbl = std::strtod(stRep.c_str(), &endptr);
+		if ((*endptr != '\0' && strcmp("f", endptr) != 0))
+			throw ScalarConverter::InvalidInputExc();
+	}
 
 	print(dbl, isDig);
 }
 
 const char *ScalarConverter::InvalidInputExc::what() const throw() {
-	return "Invalid input! You need to enter one argument: a number or a pseudo literal.";
+	return "Invalid input! You need to enter one argument: a number, char or pseudo literal.";
 }
