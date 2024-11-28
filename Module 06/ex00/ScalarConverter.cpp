@@ -20,7 +20,10 @@ int decimals(double num){
 	std::ostringstream oss;
 	oss << deci;
 
-	int count;
+	int count = oss.str().length() - (oss.str().find("."));
+	if (count < 8)
+		count -= 1;
+/*	std::string str = oss.str();
 
 	if (deci == 0)
 		count = 1;
@@ -30,7 +33,7 @@ int decimals(double num){
 		std::cout << "Len: " << count << std::endl;
 		if (count < 7)
 			count -= 2;
-	}
+	}*/
 	return count;
 }
 
