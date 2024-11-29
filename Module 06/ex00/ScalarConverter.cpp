@@ -23,17 +23,6 @@ int decimals(double num){
 	int count = oss.str().length() - (oss.str().find("."));
 	if (count < 8)
 		count -= 1;
-/*	std::string str = oss.str();
-
-	if (deci == 0)
-		count = 1;
-	else
-	{
-		count = static_cast<int>(oss.str().length());
-		std::cout << "Len: " << count << std::endl;
-		if (count < 7)
-			count -= 2;
-	}*/
 	return count;
 }
 
@@ -54,14 +43,17 @@ void print(double dbl, bool isDig) {
 	else
 		std::cout << static_cast<int>(dbl) << std::endl;
 
-	//int deci = decimals(dbl);
+	int deci = decimals(dbl);
 	// FLOAT
 	std::cout << "float: ";
-	std::cout << std::fixed << std::setprecision(decimals(dbl)) << static_cast<float>(dbl) << "f" << std::endl;
+	if (deci <= 6)
+		std::cout << std::fixed << std::setprecision(deci) << static_cast<float>(dbl) << "f" << std::endl;
+	else
+		std::cout << std::fixed << std::setprecision(6) << static_cast<float>(dbl) << "f" << std::endl;
 
 	// DOUBLE
 	std::cout << "double: ";
-	std::cout << std::fixed << std::setprecision(decimals(dbl)) << dbl << std::endl;
+	std::cout << std::fixed << std::setprecision(deci) << dbl << std::endl;
 }
 
 void ScalarConverter::convert(std::string stRep) {
