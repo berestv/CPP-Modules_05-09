@@ -12,9 +12,15 @@ public:
 	Array(unsigned int num);
 	Array(const Array& cpy);
 	Array &operator=(const Array& cpy);
+	Array &operator[](unsigned int i);
 	~Array();
 
 	unsigned int size();
+
+	class OutOfBoundsE : public std::exception {
+	public:
+		virtual const char * what() const throw();
+	};
 };
 
 #include "Array.tpp"

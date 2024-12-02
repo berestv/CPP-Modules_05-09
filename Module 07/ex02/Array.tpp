@@ -34,9 +34,24 @@ Array<T> &Array<T>::operator=(const Array<T> &cpy) {
 	return *this;
 }
 
+template<class T>
+Array<T> &Array<T>::operator[](unsigned int i) {
+
+}
+
 template <class T>
 Array<T>::~Array()
 {
 	if (elm)
 		delete[] elm;
+}
+
+template<class T>
+unsigned int Array<T>::size() {
+	return this->sz;
+}
+
+template<class T>
+const char *Array<T>::OutOfBoundsE::what() const throw() {
+	std::cerr << "Index out of bounds!" << std::endl;
 }
