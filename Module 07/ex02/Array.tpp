@@ -35,8 +35,10 @@ Array<T> &Array<T>::operator=(const Array<T> &cpy) {
 }
 
 template<class T>
-Array<T> &Array<T>::operator[](unsigned int i) {
-
+T &Array<T>::operator[](unsigned int i) {
+	if (!elm[i])
+		throw OutOfBoundsE();
+	return elm[i];
 }
 
 template <class T>

@@ -12,7 +12,7 @@ public:
 	Array(unsigned int num);
 	Array(const Array& cpy);
 	Array &operator=(const Array& cpy);
-	Array &operator[](unsigned int i);
+	T &operator[](unsigned int i);
 	~Array();
 
 	unsigned int size();
