@@ -9,8 +9,8 @@ Array<T>::Array() : sz(0) {
 template <typename T>
 Array<T>::Array(unsigned int num) : sz(num) {
 	elm = new T[num];
-	for (int i = 0; i < num; i++) {
-		elm[i] = new T();
+	for (unsigned int i = 0; i < num; i++) {
+		elm[i] = T();
 	}
 }
 
@@ -18,7 +18,7 @@ template<class T>
 Array<T>::Array(const Array<T> &cpy) {
 	sz = cpy.sz;
 	elm = new T[sz];
-	for (int i = 0; i < sz; i++)
+	for (unsigned int i = 0; i < sz; i++)
 		elm[i] = cpy.elm[i];
 }
 
@@ -28,7 +28,7 @@ Array<T> &Array<T>::operator=(const Array<T> &cpy) {
 	{
 		sz = cpy.sz;
 		elm = new T[sz];
-		for (int i = 0; i < sz; i++)
+		for (unsigned int i = 0; i < sz; i++)
 			elm[i] = cpy.elm[i];
 	}
 	return *this;
