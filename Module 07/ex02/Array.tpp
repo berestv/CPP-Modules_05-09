@@ -8,6 +8,8 @@ Array<T>::Array() : sz(0) {
 
 template <typename T>
 Array<T>::Array(unsigned int num) : sz(num) {
+	if (num < 0 || num > 2147483647)
+		throw Array::OutOfBoundsE();
 	elm = new T[num];
 	for (unsigned int i = 0; i < num; i++) {
 		elm[i] = T();
@@ -55,5 +57,5 @@ unsigned int Array<T>::size() {
 
 template<class T>
 const char *Array<T>::OutOfBoundsE::what() const throw() {
-	std::cerr << "Index out of bounds!" << std::endl;
+	return  "Index out of bounds!";
 }
