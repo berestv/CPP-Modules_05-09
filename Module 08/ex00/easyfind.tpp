@@ -1,8 +1,12 @@
+// easyfind.tpp
 #ifndef EASYFIND_TPP
 #define EASYFIND_TPP
 
-class easyfind {
 
-};
+
+template<typename T>
+T easyfind(T& first, int n){
+
+}
 
 #endif //EASYFIND_TPP
