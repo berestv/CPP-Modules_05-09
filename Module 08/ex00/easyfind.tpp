@@ -6,7 +6,7 @@
 
 template<typename T>
 T easyfind(T& cont, int n){
-	std::find()
+	std::find(cont, n);
 }
 
 #endif //EASYFIND_TPP
