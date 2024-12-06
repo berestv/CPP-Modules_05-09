@@ -4,8 +4,9 @@
 #include <iostream>
 #include <algorithm>
 
-class easyfind {
-	class NotFoundE : public std::exception {
+class easyFind {
+public:
+	class NotFoundException : public std::exception {
 	public:
 		virtual const char* what() const throw();
 	};

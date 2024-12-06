@@ -5,8 +5,11 @@
 #include "easyfind.hpp"
 
 template<typename T>
-T easyfind(T& cont, int n){
-	std::find(cont, n);
+T easyFind(T& cont, int n){
+	T pos = std::find(cont.begin(), cont.end(), n);
+	if (pos == cont.end())
+		throw easyFind::NotFoundException();
+	return pos;
 }
 
 #endif //EASYFIND_TPP
