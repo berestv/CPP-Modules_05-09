@@ -12,6 +12,7 @@ RESET   = \033[0m
 # Project name
 NAME = span
 SRC = main.cpp \
+		Span.cpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
