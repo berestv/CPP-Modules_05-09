@@ -10,7 +10,7 @@ RESET   = \033[0m
 
 
 # Project name
-NAME = easyfind
+NAME = span
 SRC = main.cpp \
 
 OBJDIR = .bin
