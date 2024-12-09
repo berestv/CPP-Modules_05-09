@@ -2,7 +2,7 @@
 
 int main() {
 	try {
-		int container[7] = { 21, 42, 35, 1, 29, 55, 3 };
+		std::vector<int> container = { 21, 42, 35, 1, 29, 55, 3 };
 		easyFind(container, 42);
 	}
 	catch (std::exception &e) {
