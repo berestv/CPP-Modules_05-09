@@ -15,6 +15,10 @@ public:
 	Span(const Span& cpy);
 	Span &operator=(const Span& cpy);
 	~Span();
+
+	class InvArgsException : public std::exception {
+		virtual const char* what() const throw();
+	};
 };
 
 #endif //SPAN_HPP
