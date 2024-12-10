@@ -16,7 +16,17 @@ public:
 	Span &operator=(const Span& cpy);
 	~Span();
 
+	void addNumber(int n);
+	unsigned int shortestSpan();
+	unsigned int longestSpan();
+
 	class InvArgsException : public std::exception {
+		virtual const char* what() const throw();
+	};
+	class FullVecException : public std::exception {
+		virtual const char* what() const throw();
+	};
+	class NotEnoughNumException : public std::exception {
 		virtual const char* what() const throw();
 	};
 };
