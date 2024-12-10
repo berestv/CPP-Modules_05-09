@@ -43,10 +43,10 @@ unsigned int Span::shortestSpan() {
 
 	std::vector<int> temp = stash;
 	std::sort(temp.begin(), temp.end());
-	int shSp = stash[1] - stash[0];
-	for (int i = 1; i < size; i++) {
-		if (shSp > (stash[i + 1] - stash[i]))
-			shSp = stash[i + 1] - stash[i];
+	int shSp = temp[1] - temp[0];
+	for (int i = 1; i < size - 1; i++) {
+		if (shSp > (temp[i + 1] - temp[i]))
+			shSp = temp[i + 1] - temp[i];
 	}
 	return shSp;
 }
@@ -55,7 +55,7 @@ unsigned int Span::longestSpan() {
 	if (stash.size() < 2)
 		throw NotEnoughNumException();
 
-	return (std::max(stash.begin(), stash.end()) - std::min(stash.begin(), stash.end()));
+	return (*std::max_element(stash.begin(), stash.end()) - *std::min_element(stash.begin(), stash.end()));
 }
 
 const char *Span::InvArgsException::what() const throw() {
