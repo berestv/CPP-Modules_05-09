@@ -4,7 +4,8 @@ Span::Span(unsigned int n) {
 	if (n >= 0 && n <= 2147483647)
 	{
 		max = n;
-		stash = std::vector<int>(5);
+		//stash = std::vector<int>(5);
+		stash.reserve(n);
 	}
 	else
 		throw InvArgsException();
@@ -42,7 +43,7 @@ unsigned int Span::shortestSpan() {
 
 	std::vector<int> temp = stash;
 	std::sort(temp.begin(), temp.end());
-	unsigned int shSp = stash[1] - stash[0];
+	int shSp = stash[1] - stash[0];
 	for (int i = 1; i < size; i++) {
 		if (shSp > (stash[i + 1] - stash[i]))
 			shSp = stash[i + 1] - stash[i];
