@@ -19,6 +19,7 @@ public:
 	void addNumber(int n);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
+	void addMany(unsigned int n);
 
 	class InvArgsException : public std::exception {
 		virtual const char* what() const throw();

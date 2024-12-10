@@ -1,14 +1,11 @@
 #include "Span.hpp"
 
 Span::Span(unsigned int n) {
-	if (n >= 0 && n <= 2147483647)
-	{
-		max = n;
-		//stash = std::vector<int>(5);
-		stash.reserve(n);
-	}
-	else
+	if (n > 2147483647)
 		throw InvArgsException();
+	max = n;
+	stash.reserve(n);
+	//stash = std::vector<int>(5);
 }
 
 Span::Span(const Span &cpy) {
@@ -56,6 +53,15 @@ unsigned int Span::longestSpan() {
 		throw NotEnoughNumException();
 
 	return (*std::max_element(stash.begin(), stash.end()) - *std::min_element(stash.begin(), stash.end()));
+}
+
+void Span::addMany(unsigned int n) {
+
+	if (n > 2147483647 || n > stash.size())
+		throw InvArgsException();
+
+	for (unsigned int i = 3; i <= n * 3; i += 3)
+		addNumber(i);
 }
 
 const char *Span::InvArgsException::what() const throw() {
