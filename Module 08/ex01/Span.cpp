@@ -57,7 +57,7 @@ unsigned int Span::longestSpan() {
 
 void Span::addMany(unsigned int n) {
 
-	if (n > 2147483647 || n > stash.size())
+	if (n > 2147483647 || n > stash.size() - 1)
 		throw InvArgsException();
 
 	for (unsigned int i = 3; i <= n * 3; i += 3)
