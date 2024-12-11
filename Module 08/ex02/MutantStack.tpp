@@ -22,11 +22,11 @@ MutantStack<T>::~MutantStack() {
 }
 
 template <typename T>
-iterator MutantStack<T>::begin() {
+MutantStack<T>::iterator MutantStack<T>::begin() {
 	return std::stack<T>::c.begin();
 }
 
 template <typename T>
-iterator MutantStack<T>::end() {
+MutantStack<T>::iterator MutantStack<T>::end() {
 	return std::stack<T>::c.end();
 }

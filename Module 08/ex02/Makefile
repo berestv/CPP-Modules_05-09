@@ -12,6 +12,7 @@ RESET   = \033[0m
 # Project name
 NAME = mutated
 SRC = main.cpp \
+		MutantStack.tpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

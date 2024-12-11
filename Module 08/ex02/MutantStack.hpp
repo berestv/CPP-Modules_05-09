@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stack>
 
-template<class T> class MutantStack : public std::stack<T> {
+template<typename T> class MutantStack : public std::stack<T> {
 public:
 	MutantStack();
 	MutantStack(const MutantStack& cpy);
@@ -16,6 +16,36 @@ public:
 	iterator end();
 };
 
-#include "MutantStack.tpp"
+template <typename T>
+MutantStack<T>::MutantStack() {
+
+}
+
+template <typename T>
+MutantStack<T>::MutantStack(const MutantStack<T> &cpy) {
+
+}
+
+template <typename T>
+MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &cpy) {
+
+}
+
+template <typename T>
+MutantStack<T>::~MutantStack() {
+
+}
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::begin() {
+	return std::stack<T>::c.begin();
+}
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::end() {
+	return std::stack<T>::c.end();
+}
+
+//#include "MutantStack.tpp"
 
 #endif //MUTANTSTACK_HPP
