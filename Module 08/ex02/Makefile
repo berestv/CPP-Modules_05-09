@@ -10,7 +10,7 @@ RESET   = \033[0m
 
 
 # Project name
-NAME = muta
+NAME = mutated
 SRC = main.cpp \
 
 OBJDIR = .bin
