@@ -23,12 +23,14 @@ MutantStack<T>::MutantStack() {
 
 template <typename T>
 MutantStack<T>::MutantStack(const MutantStack<T> &cpy) {
-
+	*this = cpy;
 }
 
 template <typename T>
 MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &cpy) {
-
+	if (this != &cpy)
+		std::stack<T>::operator=(&cpy);
+	return *this;
 }
 
 template <typename T>
