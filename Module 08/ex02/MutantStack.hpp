@@ -46,6 +46,4 @@ typename MutantStack<T>::iterator MutantStack<T>::end() {
 	return std::stack<T>::c.end();
 }
 
-//#include "MutantStack.tpp"
-
 #endif //MUTANTSTACK_HPP
