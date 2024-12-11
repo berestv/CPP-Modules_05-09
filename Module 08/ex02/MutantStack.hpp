@@ -10,8 +10,10 @@ public:
 	MutantStack(const MutantStack& cpy);
 	MutantStack &operator=(const MutantStack& cpy);
 	~MutantStack();
-	typename std::stack<T>::container_type::iterator begin();
-	typename std::stack<T>::container_type::iterator end();
+
+	typedef typename std::stack<T>::container_type::iterator iterator;
+	iterator begin();
+	iterator end();
 };
 
 #include "MutantStack.tpp"
