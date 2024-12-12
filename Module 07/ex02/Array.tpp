@@ -8,7 +8,7 @@ Array<T>::Array() : sz(0) {
 
 template <typename T>
 Array<T>::Array(unsigned int num) : sz(num) {
-	if (num < 0 || num > 2147483647)
+	if (num > 2147483647)
 		throw Array::OutOfBoundsE();
 	elm = new T[num];
 	for (unsigned int i = 0; i < num; i++) {
