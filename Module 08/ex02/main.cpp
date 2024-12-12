@@ -27,8 +27,9 @@ int main() {
 	std::list<int> mlist;
 	mlist.push_back(5);
 	mlist.push_back(17);
-	std::cout << *mlist.begin() << std::endl;
-	mlist.pop_front();
+	std::cout << mlist.back() << std::endl;
+
+	mlist.pop_back();
 	std::cout << mlist.size() << std::endl;
 	mlist.push_back(3);
 	mlist.push_back(5);
@@ -38,7 +39,7 @@ int main() {
 	std::list<int>::iterator mit = mlist.begin();
 	std::list<int>::iterator mite = mlist.end();
 	++mit;
-	--mite;
+	--mit;
 	while (mit != mite) {
 		std::cout << *mit << std::endl;
 		++mit;
