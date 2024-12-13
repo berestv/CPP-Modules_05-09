@@ -23,6 +23,8 @@ int main() {
 	}
 	std::stack<int> s(mstack);
 
+	std::cout << std::endl;
+
 	std::cout << "Same operations with list:" << std::endl;
 	std::list<int> mlist;
 	mlist.push_back(5);
