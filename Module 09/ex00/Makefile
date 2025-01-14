@@ -12,6 +12,7 @@ RESET   = \033[0m
 # Project name
 NAME = btc
 SRC = main.cpp \
+		BitcoinExchange.cpp \
 
 OBJDIR = .bin
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
