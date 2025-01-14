@@ -10,7 +10,7 @@ RESET   = \033[0m
 
 
 # Project name
-NAME = mutated
+NAME = btc
 SRC = main.cpp \
 
 OBJDIR = .bin
