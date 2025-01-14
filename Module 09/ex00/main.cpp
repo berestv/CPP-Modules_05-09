@@ -1,8 +1,8 @@
 #include "BitcoinExchange.hpp"
 
-bool checkExtension(std::string file)
+bool checkExtension(const std::string& file)
 {
-	int i = file.rfind('.');
+	size_t i = file.rfind('.');
 	if (i == std::string::npos)
 		return false;
 	std::string ext = file.substr(i);
@@ -17,15 +17,23 @@ int main (int argc, char* argv[])
 	{
 		if (checkExtension(argv[1]))
 		{
-			std::ofstream ofs;
-			ofs.open(argv[1]);
+			std::ifstream ofs(argv[1]);
 			if (ofs.is_open())
 			{
+				std::cout << "File exists! Comparing..." << std::endl;
 
+
+				try {
+					BitcoinExchange btc(argv[1]);
+				} catch (std::exception &e) {
+					std::cerr << e.what() << std::endl;
+				}
+				ofs.close();
 			} else
-				std::cerr << "Error: file does not exist!" << std::endl;
+				std::cerr << "Error: could not open file." << std::endl;
 		} else
 			std::cerr << "Error: wrong file extension! Please use .txt files." << std::endl;
 	} else
 		std::cerr << "Error: wrong number of arguments!" << std::endl;
+	return 0;
 }

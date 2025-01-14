@@ -22,6 +22,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
+		clear ;
 		echo "$(GREEN)Build completed. $(RESET)" ;
 
 $(OBJDIR)/%.o: %.cpp
@@ -33,6 +34,7 @@ clean:
 
 fclean:
 		$(RM) $(OBJ) $(NAME) $(OBJDIR)
+		clear ;
 		echo "$(RED)Cleaned project files/folders. $(RESET)" ;
 
 re: fclean all
