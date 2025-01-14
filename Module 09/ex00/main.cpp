@@ -17,18 +17,17 @@ int main (int argc, char* argv[])
 	{
 		if (checkExtension(argv[1]))
 		{
-			std::ifstream ofs(argv[1]);
-			if (ofs.is_open())
+			std::ifstream st(argv[1]);
+			if (st.is_open())
 			{
 				std::cout << "File exists! Comparing..." << std::endl;
-
 
 				try {
 					BitcoinExchange btc(argv[1]);
 				} catch (std::exception &e) {
 					std::cerr << e.what() << std::endl;
 				}
-				ofs.close();
+				st.close();
 			} else
 				std::cerr << "Error: could not open file." << std::endl;
 		} else
