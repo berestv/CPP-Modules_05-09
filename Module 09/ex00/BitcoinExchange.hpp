@@ -5,13 +5,14 @@
 #include <fstream>
 #include <map>
 #include <sstream>
+#include <cstdlib>
 
 class BitcoinExchange {
 private:
 	std::map<std::string, double> btcVals;
 
 public:
-	BitcoinExchange(const std::string &input);
+	BitcoinExchange(std::string &input);
 	BitcoinExchange(const BitcoinExchange& cpy);
 	BitcoinExchange &operator=(const BitcoinExchange &cpy);
 	~BitcoinExchange();

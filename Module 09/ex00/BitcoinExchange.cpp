@@ -1,8 +1,11 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(const std::string &input) {
+BitcoinExchange::BitcoinExchange(std::string &input) {
+	if (input.empty())
+		throw InvDbException();
 	if (!handleCSV())
 		throw InvDbException();
+	handleInput(input);
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &cpy) {
@@ -34,7 +37,8 @@ bool BitcoinExchange::handleCSV() {
 		double rate = std::strtod(line.substr(sep + 1).c_str(), NULL);
 		if (rate < 0 || rate > 2147483647)
 			return false;
-
+		if (!valiDate(date))
+			return false;
 	}
 	return true;
 }
@@ -46,12 +50,12 @@ void numReturns(char c)
 			std::cerr << "Error: not a positive number." << std::endl;
 			break;
 		case 'b':
-			std::
+			std::cerr << "Error: " << std::endl;
 	}
 }
 
 bool BitcoinExchange::handleInput(std::string &input) {
-	std::ifstream st(input);
+	std::stringstream st(input);
 	std::string line;
 
 	std::getline(st, line);
@@ -80,6 +84,8 @@ bool BitcoinExchange::valiDate(std::string &date) {
 
 	if (y < 1900 || y > 2025)
 		return false;
+
+	return true;
 }
 
 // EXCEPTIONS

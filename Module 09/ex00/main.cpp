@@ -23,7 +23,7 @@ int main (int argc, char* argv[])
 				std::cout << "File exists! Comparing..." << std::endl;
 
 				try {
-					BitcoinExchange btc(argv[1]);
+					BitcoinExchange btc(reinterpret_cast<std::string &>(argv[1]));
 				} catch (std::exception &e) {
 					std::cerr << e.what() << std::endl;
 				}
