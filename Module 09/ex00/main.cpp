@@ -20,10 +20,8 @@ int main (int argc, char* argv[])
 			std::ifstream st(argv[1]);
 			if (st.is_open())
 			{
-				std::cout << "File exists! Comparing..." << std::endl;
-
 				try {
-					BitcoinExchange btc(reinterpret_cast<std::string &>(argv[1]));
+					BitcoinExchange btc(argv[1]);
 				} catch (std::exception &e) {
 					std::cerr << e.what() << std::endl;
 				}

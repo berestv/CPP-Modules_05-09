@@ -12,7 +12,7 @@ private:
 	std::map<std::string, double> btcVals;
 
 public:
-	BitcoinExchange(std::string &input);
+	BitcoinExchange(std::string input);
 	BitcoinExchange(const BitcoinExchange& cpy);
 	BitcoinExchange &operator=(const BitcoinExchange &cpy);
 	~BitcoinExchange();
@@ -22,6 +22,10 @@ public:
 	static bool valiDate(std::string &date);
 
 	class InvDbException : public std::exception {
+		virtual const char* what() const throw();
+	};
+
+	class InvInputException : public std::exception {
 		virtual const char* what() const throw();
 	};
 };
