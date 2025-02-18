@@ -42,50 +42,54 @@ bool BitcoinExchange::handleCSV() {
 			return false;
 		if (!valiDate(date))
 			return false;
+		btcVals[date] = rate;
 	}
+	st.close();
 	return true;
-}
-
-void numReturns(char c)
-{
-	switch (c) {
-		case 'n':
-			std::cerr << "Error: not a positive number." << std::endl;
-			break;
-		case 'b':
-			std::cerr << "Error: " << std::endl;
-	}
 }
 
 bool BitcoinExchange::handleInput(std::string &input) {
 	std::ifstream st(input.c_str());
-	std::cout << "Opening " << input.c_str() << std::endl;
 	if (!st.is_open())
 		return false;
 	std::string line;
-/*	std::getline(st, line);
 
-	if (line != "date | value")
-		return false;*/
-
+	std::getline(st, line);
 	while (std::getline(st, line))
 	{
-/*		size_t start = line.find_first_not_of(" \t");
-		if (start != std::string::npos)
-			line = line.substr(start);*/
-
 		size_t pipe = line.find('|');
 		if (pipe == std::string::npos)
 		{
-			std::cout << "Couldn't find pipe in: " << line << std::endl;
-			return false;
+			std::cerr << "Error: bad input => " << line << std::endl;
+			continue;
 		}
 
+		std::string date = line.substr(0, pipe);
+		std::string value = line.substr(pipe + 1);
+		char* ptr;
+		double val = std::strtod(value.c_str(), &ptr);
+
+		if (!valiDate(date) || *ptr != '\0')
+			std::cerr << "Error: bad input => " << line << std::endl;
+		else if (val < 0)
+			std::cerr << "Error: not a positive number." << std::endl;
+		else if (val > 2147483647)
+			std::cerr << "Error: too large a number." << std::endl;
+		else
+		{
+			std::map<std::string, double>::iterator it = btcVals.upper_bound(date);
+			it--;
+			double mult = it->second;
+			std::cout << date << " => " << val << " = " << val * mult << std::endl;
+		}
 	}
+	st.close();
 	return true;
 }
 
 bool BitcoinExchange::valiDate(std::string &date) {
+	if (date.size() == 11 && date[10] == ' ')
+		date.erase(10);
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return false;
 
@@ -94,8 +98,14 @@ bool BitcoinExchange::valiDate(std::string &date) {
 
 	std::stringstream ss(date);
 	ss >> y >> dash >> m >> dash2 >> d;
-	if (ss.fail() || dash != '-' || dash2 != '-')
+	if (ss.fail() || dash != '-' || dash2 != '-' || y < 2009 || y > 3000 || m > 12 || m < 1 || d > 31 || d < 1)
 		return false;
+
+	/*int mDays[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	if (y % 4 == 0 || y % 400 == 0)
+		mDays[1] = 29;
+	if (d <= mDays[m - 1])
+		return false;*/
 	return true;
 }
 
