@@ -101,11 +101,11 @@ bool BitcoinExchange::valiDate(std::string &date) {
 	if (ss.fail() || dash != '-' || dash2 != '-' || y < 2009 || y > 3000 || m > 12 || m < 1 || d > 31 || d < 1)
 		return false;
 
-	/*int mDays[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	if (y % 4 == 0 || y % 400 == 0)
+	int mDays[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)
 		mDays[1] = 29;
-	if (d <= mDays[m - 1])
-		return false;*/
+	if (d > mDays[m - 1])
+		return false;
 	return true;
 }
 
