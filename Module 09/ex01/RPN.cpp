@@ -12,12 +12,15 @@ RPN::RPN(std::string operation) {
 	while (ss >> token) {
 		if (token.find_first_not_of("0123456789") == std::string::npos)
 			num.push(std::atoi(token.c_str()));
-		else if (token.size() == 1)
-			ops.push(token);
+		else if (token.size() == 1 && token.find_first_not_of("+-*/") == std::string::npos)
+			execute(token);
 		else
 			throw ErrorException();
 	}
-	execute();
+	if (num.size() > 1)
+		throw ErrorException();
+
+	std::cout << num.top() << std::endl;
 }
 
 RPN::RPN(const RPN &cpy) {
@@ -36,60 +39,35 @@ RPN::~RPN() {
 
 // FUNCITONS
 
-void RPN::execute() {
-	if (num.size() != (ops.size() + 1))
+void RPN::execute(std::string &token) {
+	if (num.size() < 2)
 		throw ErrorException();
 
-	std::stack<std::string> tmpOps;
-	while (!ops.empty()) {
-		tmpOps.push(ops.top());
-		ops.pop();
+	int temp = 0;
+	int num1 = num.top();
+	num.pop();
+	int num2 = num.top();
+	num.pop();
+
+	switch (token[0]) {
+		case '+':
+			temp = num2 + num1;
+			break;
+		case '-':
+			temp = num2 - num1;
+			break;
+		case '*':
+			temp = num2 * num1;
+			break;
+		case '/':
+			if (num2 != 0)
+				temp = num2 / num1;
+			break;
+		default:
+			throw ErrorException();
 	}
-	ops = tmpOps;
-
-	std::stack<int> tmpNum;
-	while (!num.empty()) {
-		tmpNum.push(num.top());
-		num.pop();
-	}
-	num = tmpNum;
-
-	while (!ops.empty()) {
-		int temp = num.top();
-		std::cout << num.top() << " ";
-		num.pop();
-
-		switch (ops.top()[0]) {
-			case '+':
-				temp += num.top();
-				break;
-			case '-':
-				temp -= num.top();
-				break;
-			case '*':
-				temp *= num.top();
-				break;
-			case '/':
-				if (temp != 0 || num.top() != 0) {
-					temp /= num.top();
-				} else
-					ops.push("/");
-				break;
-			default:
-				throw ErrorException();
-		}
-		std::cout << ops.top()[0] << " " << num.top() << " = " << temp;
-		num.pop();
-		ops.pop();
-
-		num.push(temp);
-		std::cout << " pushed back" << std::endl;
-	}
-
-	if (!ops.empty() || num.size() != 1)
-		throw ErrorException();
-
-	std::cout << num.top() << std::endl;
+	num.push(temp);
+	//std::cout << num2 << " " << token[0] << " " << num1 << " = " << temp << std::endl;		//DEBUG
 }
 
 // EXCEPTIONS

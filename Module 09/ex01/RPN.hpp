@@ -9,7 +9,6 @@
 class RPN {
 private:
 	std::stack<int> num;
-	std::stack<std::string> ops;
 
 public:
 	RPN(std::string operation);
@@ -17,7 +16,7 @@ public:
 	RPN &operator=(const RPN &cpy);
 	~RPN();
 
-	void execute();
+	void execute(std::string &token);
 
 	class ErrorException : public std::exception {
 		virtual const char* what() const throw();
