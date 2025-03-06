@@ -1,10 +1,12 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
-#include "iostream"
-#include "vector"
+#include <iostream>
+#include <vector>
 #include <sstream>
-#include "stdlib.h"
+#include <ctime>
+#include <stdlib.h>
+#include <iomanip>
 
 class PmergeMe {
 private:
@@ -19,8 +21,11 @@ public:
 	void printVec(char c) const;
 	void sortVec();
 
-
 	class InvalidInputException : public std::exception {
+		virtual const char* what() const throw();
+	};
+
+	class InvalidSizeExcepiton : public std::exception {
 		virtual const char* what() const throw();
 	};
 };
