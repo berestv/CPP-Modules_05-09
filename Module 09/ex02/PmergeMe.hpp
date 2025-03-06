@@ -11,12 +11,14 @@ private:
 	std::vector<int> num;
 
 public:
-	PmergeMe(const std::string& input);
+	PmergeMe(std::stringstream& ss);
 	PmergeMe(const PmergeMe &cpy);
 	PmergeMe &operator=(const PmergeMe &cpy);
 	~PmergeMe();
 
 	void printVec(char c) const;
+	void sortVec();
+
 
 	class InvalidInputException : public std::exception {
 		virtual const char* what() const throw();

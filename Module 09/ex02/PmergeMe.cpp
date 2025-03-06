@@ -1,13 +1,13 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(const std::string& input) {
-	if (input.empty() || input.find_first_not_of(" 0123456789") != std::string::npos)
-		throw InvalidInputException();
-
-	std::stringstream ss(input);
+PmergeMe::PmergeMe(std::stringstream& ss) {
 	std::string n;
-	while (ss >> n)
+
+	while (ss >> n) {
+		if (n.empty() || n.find_first_not_of(" 0123456789") != std::string::npos)
+			throw InvalidInputException();
 		num.push_back(atoi(n.c_str()));
+	}
 	printVec('b');
 }
 
