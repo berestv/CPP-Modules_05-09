@@ -7,6 +7,8 @@
 #include <ctime>
 #include <stdlib.h>
 #include <iomanip>
+#include <algorithm>
+#include <utility>
 
 class PmergeMe {
 private:
@@ -19,7 +21,8 @@ public:
 	~PmergeMe();
 
 	void printVec(char c) const;
-	void sortVec();
+	void sortVec(std::vector<int> &vec);
+	bool isVecSorted(std::vector<int> &vec);
 
 	class InvalidInputException : public std::exception {
 		virtual const char* what() const throw();
