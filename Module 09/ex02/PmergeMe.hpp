@@ -5,7 +5,7 @@
 #include <vector>
 #include <sstream>
 #include <ctime>
-#include <stdlib.h>
+#include <cstdlib>
 #include <iomanip>
 #include <algorithm>
 #include <utility>
