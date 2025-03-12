@@ -12,7 +12,15 @@ PmergeMe::PmergeMe(std::stringstream& ss) {
 		throw InvalidSizeExcepiton();
 
 	printVec('b');
+	clock_t start = clock();
+
 	sortVec(num);
+
+	printVec('a');
+	clock_t finish = clock();
+	double elapsed = (double(finish - start) / CLOCKS_PER_SEC) * 1000000;
+	std::cout << std::fixed << std::setprecision(5) << "Time to process a range of " << num.size()
+	<< " elements with std::vector : " << elapsed << " μs" << std::endl;
 }
 
 PmergeMe::PmergeMe(const PmergeMe &cpy) {
@@ -46,10 +54,7 @@ void binaryInsert(std::vector<int>& sorted, int value) {
 	sorted.insert(it, value);
 }
 
-std::pair<std::vector<int>,std::vector<int> > makePairs(const std::vector<int>& vec, int& lftOut) {
-	;
-	std::vector<int> large;
-	std::vector<int> small;
+void makePairs(const std::vector<int>& vec, std::vector<int> &large, std::vector<int> &small, int& lftOut) {
 	lftOut = -1;
 
 	for (size_t i = 0; i + 1 < vec.size(); i += 2) {
@@ -65,28 +70,23 @@ std::pair<std::vector<int>,std::vector<int> > makePairs(const std::vector<int>& 
 	if (vec.size() % 2 != 0) {
 		lftOut = vec.back();
 	}
-	std::pair<std::vector<int>,std::vector<int> > pairs(large, small);
-	return pairs;
 }
 
 void PmergeMe::sortVec(std::vector<int> &vec) {
-	clock_t start = clock();
-
 	if (vec.size() <= 1)
 		return ;
 
-	int lftOut;
+	int lftOut = -1;
+	std::vector<int> large;
+	std::vector<int> small;
 
-	std::pair<std::vector<int>,std::vector<int> > pairs = makePairs(vec, lftOut);
-	std::vector<int>& large(pairs.first);
-	std::vector<int>& small(pairs.second);
+	makePairs(vec, large, small, lftOut);
 
-	if (large.size() < num.size())
+	std::cout << "Recursion." << std::endl;
+	if (!isVecSorted(large))
 		sortVec(large);
-	else
-		return ;
 
-	num.erase(num.begin(), num.end());
+	num.clear();
 	num.insert(num.begin(), large.begin(), large.end());
 
 	for (size_t i = 0; i < small.size(); ++i) {
@@ -95,18 +95,12 @@ void PmergeMe::sortVec(std::vector<int> &vec) {
 
 	if (lftOut != -1)
 		binaryInsert(num, lftOut);
-
-	clock_t finish = clock();
-	double elapsed = (double(finish - start) / CLOCKS_PER_SEC); //* 1000000;
-	printVec('a');
-	std::cout << std::fixed << std::setprecision(5) << "Time to process a range of " << num.size()
-	<< " elements with std::vector : " << elapsed << " μs" << std::endl;
 }
 
 bool PmergeMe::isVecSorted(std::vector<int> &vec) {
 	if (vec.empty())
 		throw InvalidSizeExcepiton();
-	for (size_t i = 0; i + 1 <= vec.size(); ++i)
+	for (size_t i = 0; i + 1 < vec.size(); ++i)
 		if (vec[i] > vec[i + 1])
 			return false;
 	return true;
