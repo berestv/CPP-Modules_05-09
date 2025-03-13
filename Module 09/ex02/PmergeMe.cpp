@@ -1,5 +1,4 @@
 #include "PmergeMe.hpp"
-
 PmergeMe::PmergeMe(std::stringstream& ss) {
 	std::string n;
 
@@ -10,17 +9,24 @@ PmergeMe::PmergeMe(std::stringstream& ss) {
 	}
 	if (num.size() <= 1)
 		throw InvalidSizeExcepiton();
+	std::deque<int> deq(num.begin(), num.end());
 
 	printVec('b');
 	clock_t start = clock();
-
 	sortVec(num);
-
-	printVec('a');
 	clock_t finish = clock();
-	double elapsed = (double(finish - start) / CLOCKS_PER_SEC) * 1000000;
-	std::cout << std::fixed << std::setprecision(5) << "Time to process a range of " << num.size()
-	<< " elements with std::vector : " << elapsed << " μs" << std::endl;
+	printVec('a');
+	double elapsed = (static_cast<double>(finish - start) / CLOCKS_PER_SEC) * 1000;
+	std::cout << "Time to process a range of " << num.size() << " elements with std::vector : "
+	<< std::fixed << std::setprecision(3) <<  elapsed << " ms" << std::endl;
+
+	start = clock();
+	sortDeq(deq);
+	finish = clock();
+
+	elapsed = (static_cast<double>(finish - start) / CLOCKS_PER_SEC) * 1000;
+	std::cout << "Time to process a range of " << num.size() << " elements with std::deque  : "
+	<<  elapsed << " ms" << std::endl;
 }
 
 PmergeMe::PmergeMe(const PmergeMe &cpy) {
@@ -37,7 +43,9 @@ PmergeMe::~PmergeMe() {
 
 }
 
-// FUNCTIONS
+// ----- FUNCTIONS ------
+// VECTOR OPERATIONS
+
 void PmergeMe::printVec(const char c) const {
 	if (c == 'b')
 		std::cout << "Before: ";
@@ -76,25 +84,23 @@ void PmergeMe::sortVec(std::vector<int> &vec) {
 	if (vec.size() <= 1)
 		return ;
 
-	int lftOut = -1;
+	int lftOut;
 	std::vector<int> large;
 	std::vector<int> small;
 
 	makePairs(vec, large, small, lftOut);
 
-	std::cout << "Recursion." << std::endl;
 	if (!isVecSorted(large))
 		sortVec(large);
 
-	num.clear();
-	num.insert(num.begin(), large.begin(), large.end());
+	vec.clear();
+	vec.insert(vec.begin(), large.begin(), large.end());
 
-	for (size_t i = 0; i < small.size(); ++i) {
-		binaryInsert(num, small[i]);
-	}
+	for (size_t i = 0; i < small.size(); ++i)
+		binaryInsert(vec, small[i]);
 
 	if (lftOut != -1)
-		binaryInsert(num, lftOut);
+		binaryInsert(vec, lftOut);
 }
 
 bool PmergeMe::isVecSorted(std::vector<int> &vec) {
@@ -104,6 +110,54 @@ bool PmergeMe::isVecSorted(std::vector<int> &vec) {
 		if (vec[i] > vec[i + 1])
 			return false;
 	return true;
+}
+
+// DEQUE OPERATIONS
+
+void binaryInsertDeq(std::deque<int>& sorted, int value) {
+	std::deque<int>::iterator it = std::lower_bound(sorted.begin(), sorted.end(), value);
+	sorted.insert(it, value);
+}
+
+void makePairsDeq(const std::deque<int>& deq, std::deque<int> &large, std::deque<int> &small, int& lftOut) {
+	lftOut = -1;
+
+	for (size_t i = 0; i + 1 < deq.size(); i += 2) {
+		if (deq[i] > deq[i + 1]) {
+			large.push_back(deq[i]);
+			small.push_back(deq[i + 1]);
+		} else {
+			large.push_back(deq[i + 1]);
+			small.push_back(deq[i]);
+		}
+	}
+
+	if (deq.size() % 2 != 0) {
+		lftOut = deq.back();
+	}
+}
+
+void PmergeMe::sortDeq(std::deque<int> &deq) {
+	if (deq.size() <= 1)
+		return ;
+
+	int lftOut;
+	std::deque<int> large;
+	std::deque<int> small;
+
+	makePairsDeq(deq, large, small, lftOut);
+
+	if (large.size() < deq.size())
+		sortDeq(large);
+
+	deq.clear();
+	deq.insert(deq.begin(), large.begin(), large.end());
+
+	for (size_t i = 0; i < small.size(); ++i)
+		binaryInsertDeq(deq, small[i]);
+
+	if (lftOut != -1)
+		binaryInsertDeq(deq, lftOut);
 }
 
 // EXCEPTIONS

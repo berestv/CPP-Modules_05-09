@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <utility>
+#include <deque>
 
 class PmergeMe {
 private:
@@ -23,6 +24,7 @@ public:
 	void printVec(char c) const;
 	void sortVec(std::vector<int> &vec);
 	bool isVecSorted(std::vector<int> &vec);
+	void sortDeq(std::deque<int> &deq);
 
 	class InvalidInputException : public std::exception {
 		virtual const char* what() const throw();
