@@ -62,7 +62,7 @@ void binaryInsert(std::vector<int>& sorted, int value) {
 	sorted.insert(it, value);
 }
 
-void makePairs(const std::vector<int>& vec, std::vector<int> &large, std::vector<int> &small, int& lftOut) {
+void makePairs(std::vector<int> &vec, std::vector<int> &large, std::vector<int> &small, int& lftOut) {
 	lftOut = -1;
 
 	for (size_t i = 0; i + 1 < vec.size(); i += 2) {
@@ -97,7 +97,12 @@ void PmergeMe::sortVec(std::vector<int> &vec) {
 	vec.insert(vec.begin(), large.begin(), large.end());
 
 	for (size_t i = 0; i < small.size(); ++i)
-		binaryInsert(vec, small[i]);
+	{
+		if (i == 0)
+			vec.insert(vec.begin(), small.front());
+		else
+			binaryInsert(vec, small[i]);
+	}
 
 	if (lftOut != -1)
 		binaryInsert(vec, lftOut);
