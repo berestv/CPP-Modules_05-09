@@ -3,7 +3,8 @@
 #include <algorithm>
 
 RPN::RPN(std::string operation) {
-	if (operation.find_first_not_of(" 0123456789+-*/") != std::string::npos)
+	if (operation.empty() || operation.find_first_not_of(" 0123456789+-*/") != std::string::npos
+	|| operation.find_first_of("0123456789") == std::string::npos)
 		throw ErrorException();
 
 	std::stringstream ss(operation);
